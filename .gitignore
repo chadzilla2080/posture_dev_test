@@ -5,6 +5,10 @@ wp-content/*
 !wp-content/themes/
 wp-content/themes/*
 !wp-content/themes/posture_cool_things/
+wp-content/plugins/*
+!wp-content/plugins/uichemy/
+!wp-content/plugins/the-plus-addons-for-block-editor/
+!wp-content/plugins/ultimate-addons-for-gutenberg/
 
 # WordPress content
 wp-content/uploads/

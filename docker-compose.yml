@@ -29,6 +29,9 @@ services:
       - wp_data:/var/www/html
       # Fix: Correct path to theme directory
       - ./wp-content/themes/posture_cool_things:/var/www/html/wp-content/themes/posture_cool_things
+
+      # Add: Map plugins directory
+      - ./wp-content/plugins:/var/www/html/wp-content/plugins
     develop:
       watch:
         - action: sync

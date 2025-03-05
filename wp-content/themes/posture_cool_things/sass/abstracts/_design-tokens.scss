@@ -1,0 +1,21 @@
+// Colors
+$color-primary: #00b2cb; // Blue background
+$color-white: #ffffff; // Text and cards
+$color-dark: #2d3047; // Text and icons
+$color-accent: #ffb84d; // Logo dot and CTA buttons
+
+// Typography
+$font-heading: sans-serif; // We'll update this once we extract the exact font
+$font-body: sans-serif; // Same here
+
+// Spacing
+$spacing-section: 80px; // Section padding
+$spacing-component: 40px; // Component spacing
+
+// Shadows
+$shadow-card: 0 4px 6px rgba(0, 0, 0, 0.1); // Card shadow
+
+// Breakpoints
+$breakpoint-mobile: 768px;
+$breakpoint-tablet: 1024px;
+$breakpoint-desktop: 1280px;

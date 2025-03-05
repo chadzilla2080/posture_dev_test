@@ -324,3 +324,36 @@ This analysis will help us structure our theme development and ensure we capture
    - [ ] Mobile breakpoint specifications
 
 docker compose exec wordpress wp plugin install figma-to-wp --activate
+
+### Design Asset Inventory
+
+#### Critical Elements
+
+- [ ] Logo with orange dot
+- [ ] Hero section background/overlay
+- [ ] Phone mockup with person (Features)
+- [ ] Phone mockup with woman (CTA)
+- [ ] News carousel arrows
+- [ ] Sample news images
+
+#### Typography
+
+- [ ] Heading font family
+- [ ] Body font family
+- [ ] Font weights used
+- [ ] Line heights
+- [ ] Letter spacing values
+
+#### Measurements
+
+- [ ] Section padding values
+- [ ] Component spacing
+- [ ] Card padding
+- [ ] Button padding
+- [ ] Responsive breakpoints
+
+#### Interactive Elements
+
+- [ ] Button hover states
+- [ ] Card hover effects
+- [ ] Carousel interaction
