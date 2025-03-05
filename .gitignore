@@ -1,0 +1,55 @@
+# WordPress core files
+wp-admin/
+wp-includes/
+wp-content/*
+!wp-content/themes/
+wp-content/themes/*
+!wp-content/themes/posture_cool_things/
+
+# WordPress content
+wp-content/uploads/
+wp-content/upgrade/
+wp-content/backup-db/
+wp-content/cache/
+wp-content/backups/
+
+# WordPress config
+wp-config.php
+.htaccess
+
+# Node.js
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+.pnpm-debug.log
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor directories and files
+.idea/
+.vscode/
+*.swp
+*.swo
+*.swn
+*.bak
+
+# Docker
+*.log
+data/
+
+# Compiled assets
+wp-content/themes/posture_cool_things/dist/
+wp-content/themes/posture_cool_things/build/ 

@@ -1,0 +1,30 @@
+@use 'sass:map';
+@use 'variables' as vars;
+
+// Media Query Mixins
+@mixin respond-to($breakpoint) {
+  @if map.has-key(vars.$breakpoints, $breakpoint) {
+    @media (min-width: map.get(vars.$breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn "Invalid breakpoint: #{$breakpoint}.";
+  }
+}
+
+// Container Mixin
+@mixin container {
+  width: 100%;
+  padding-right: vars.$container-padding;
+  padding-left: vars.$container-padding;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: vars.$container-max-width;
+}
+
+// Flex Center Mixin
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

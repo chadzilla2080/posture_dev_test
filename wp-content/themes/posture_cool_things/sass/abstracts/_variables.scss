@@ -1,0 +1,29 @@
+// Colors
+$color-primary: #009bb4;
+$color-primary-dark: #0088a0;
+$color-white: #ffffff;
+$color-dark: #333333;
+$color-gray: #f9f9f9;
+$color-border: #dddddd;
+
+// Typography
+$font-primary: 'Arial', sans-serif;
+$font-size-base: 16px;
+$line-height-base: 1.5;
+
+// Spacing
+$spacing-unit: 8px;
+$spacing-gap: $spacing-unit * 3; // 24px
+$spacing-section: $spacing-unit * 8; // 64px
+
+// Breakpoints
+$breakpoints: (
+  'small': 576px,
+  'medium': 768px,
+  'large': 992px,
+  'xlarge': 1200px,
+);
+
+// Container
+$container-max-width: 1200px;
+$container-padding: $spacing-gap;

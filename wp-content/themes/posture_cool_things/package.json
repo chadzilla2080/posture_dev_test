@@ -1,0 +1,27 @@
+{
+  "scripts": {
+    "sass:dev": "./build.sh",
+    "sass:build": "sass sass/main.scss:style.css.temp --no-source-map --style=compressed && cat style.css.header style.css.temp > style.css && rm style.css.temp",
+    "postcss": "postcss style.css --use autoprefixer cssnano --replace",
+    "build": "npm run sass:build && npm run postcss",
+    "start": "npm run sass:dev"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "> 1%",
+    "IE 11"
+  ],
+  "name": "posture_cool_things",
+  "version": "1.0.0",
+  "main": "postcss.config.js",
+  "author": "Chad Buie",
+  "license": "ISC",
+  "description": "Dev test theme for Posture Interactive",
+  "devDependencies": {
+    "autoprefixer": "^10.4.x",
+    "cssnano": "^6.0.x",
+    "postcss": "^8.4.x",
+    "postcss-cli": "^10.1.x",
+    "sass": "^1.69.x"
+  }
+}

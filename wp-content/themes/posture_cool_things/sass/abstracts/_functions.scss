@@ -1,0 +1,23 @@
+@use 'sass:math';
+
+// Convert pixels to rem
+@function rem($pixels, $context: 16) {
+  @return math.div($pixels, $context) * 1rem;
+}
+
+// Convert pixels to em
+@function em($pixels, $context: 16) {
+  @return math.div($pixels, $context) * 1em;
+}
+
+// Z-index management
+@function z($layer) {
+  $layers: (
+    'modal': 9000,
+    'overlay': 8000,
+    'dropdown': 7000,
+    'header': 6000,
+    'footer': 5000,
+  );
+  @return map-get($layers, $layer);
+}

@@ -1,0 +1,13 @@
+/*
+Theme Name: Posture Cool Things
+Theme URI: https://posture.is
+Author: Chad Buie
+Author URI: https://posture.is
+Description: Dev test theme for Posture Interactive
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: posture-cool-things
+*/
+
+/* The compiled CSS from SASS will be appended below this header */ 

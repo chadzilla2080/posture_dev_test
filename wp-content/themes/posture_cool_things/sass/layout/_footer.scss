@@ -1,0 +1,15 @@
+@use '../abstracts' as *;
+
+.site-footer {
+  padding: $spacing-section $spacing-gap;
+  background-color: $color-dark;
+  color: $color-white;
+
+  a {
+    color: $color-white;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+}

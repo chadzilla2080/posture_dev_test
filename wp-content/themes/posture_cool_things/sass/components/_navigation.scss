@@ -1,0 +1,26 @@
+@use '../abstracts' as *;
+
+.main-navigation {
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: $spacing-unit;
+  }
+
+  li {
+    margin: 0;
+  }
+
+  a {
+    color: $color-dark;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+}

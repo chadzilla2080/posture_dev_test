@@ -1,0 +1,20 @@
+@use '../abstracts' as *;
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: $spacing-gap;
+  margin-bottom: $spacing-gap;
+}
+
+.news-item {
+  background-color: $color-white;
+  border: 1px solid $color-border;
+  border-radius: 4px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
