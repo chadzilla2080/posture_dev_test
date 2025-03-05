@@ -5,10 +5,13 @@ RUN apt-get update && apt-get install -y curl gnupg \
     && curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
     && apt-get install -y nodejs
 
-# Install development tools
+# Install development tools and WP-CLI
 RUN apt-get install -y \
     inotify-tools \
-    && npm install -g sass
+    && npm install -g sass \
+    && curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
+    && chmod +x wp-cli.phar \
+    && mv wp-cli.phar /usr/local/bin/wp
 
 WORKDIR /var/www/html
 

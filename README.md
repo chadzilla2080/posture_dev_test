@@ -75,3 +75,252 @@ Run `docker compose exec wordpress npm run watch-sass` in another terminal to wa
 - The development tools are located in the `wp-content/development-tools` folder
 - The development tools are compiled to the `wp-content/development-tools/dist` folder
 - The development tools are compiled to the `wp-content/development-tools/dist` folder
+
+# Cool Things WordPress Theme Development
+
+This project involves converting a Figma design into a fully functional WordPress theme for a technical assessment. The design features a modern, clean interface with mobile-responsive components and dynamic content sections.
+
+## Table of Contents
+
+1. **Project Setup**
+
+   - Development Environment Configuration
+   - Docker Configuration
+   - WordPress Installation
+   - Theme Structure Setup
+
+2. **Design Assets**
+
+   - Figma Design Analysis
+   - Asset Export Guidelines
+   - Color Palette & Typography
+   - Image Optimization Strategy
+
+3. **Theme Development**
+
+   - Header Component
+   - Hero Section ("WE HAE A SOLUTION...")
+   - Features Section ("WE'RE THE BEST AT THINGS")
+   - Call-to-Action Section ("THIS IS WHY THE THING MATTERS")
+   - News & Updates Carousel
+   - Footer Component
+
+4. **Core Functionality**
+
+   - WordPress Template Hierarchy
+   - Custom Post Types
+   - Advanced Custom Fields Setup
+   - Navigation Menus
+   - Dynamic Content Areas
+
+5. **Interactive Elements**
+
+   - News Carousel Implementation
+   - Button Animations
+   - Responsive Navigation
+   - Scroll Effects
+
+6. **Responsive Design**
+
+   - Mobile-First Approach
+   - Breakpoint Strategy
+   - Media Queries
+   - Image Scaling
+
+7. **Performance Optimization**
+
+   - Asset Loading
+   - Image Optimization
+   - Caching Strategy
+   - Code Minification
+
+8. **Testing & Quality Assurance**
+
+   - Cross-Browser Testing
+   - Mobile Device Testing
+   - Performance Testing
+   - WordPress Standards Compliance
+
+9. **Deployment**
+   - Production Environment Setup
+   - Launch Checklist
+   - Performance Monitoring
+   - Maintenance Plan
+
+## Project Overview
+
+This WordPress theme is being developed as part of a technical assessment. The primary goal is to accurately translate a Figma design into a fully functional WordPress theme while demonstrating:
+
+- Clean, maintainable code
+- WordPress best practices
+- Responsive design implementation
+- Performance optimization
+- Modern development workflows
+
+## Key Features
+
+- Modern, clean design
+- Responsive layout
+- Dynamic news carousel
+- Custom post types for content management
+- Interactive UI elements
+- Optimized performance
+- Mobile-first approach
+
+## Development Stack
+
+- WordPress
+- PHP 8.x
+- MySQL
+- Docker
+- SASS/SCSS
+- JavaScript/jQuery
+- ACF (Advanced Custom Fields)
+
+## Getting Started
+
+[Development setup instructions will be added here]
+
+## Contributing
+
+This is a technical assessment project and is not open for contributions.
+
+## License
+
+[License information will be added here]
+
+## Design Analysis
+
+### Color Palette
+
+- Primary Blue: #00B2CB (Used in background sections)
+- White: #FFFFFF (Text and cards)
+- Dark Navy: #2D3047 (Text and icons)
+- Orange/Yellow: #FFB84D (Logo dot and CTA buttons)
+
+### Typography
+
+- Headings: Appears to be a bold sans-serif font
+  - "WE HAE A SOLUTION..." - Large hero text
+  - "WE'RE THE BEST AT THINGS" - Section heading
+  - "THIS IS WHY THE THING MATTERS" - Section heading
+  - "NEWS & UPDATES" - Section heading
+- Body Text: Light/Regular weight sans-serif font
+  - Lorem ipsum placeholder text used throughout
+
+### Layout Components
+
+1. **Header**
+
+   - Logo with "Cool Things" text and orange dot
+   - (Navigation menu not visible in screenshot but should be planned for)
+
+2. **Hero Section**
+
+   - Full-width blue background
+   - Large white text headline
+   - "PRODUCTS" CTA button with white border
+
+3. **Features Card**
+
+   - White card with drop shadow
+   - Left side: Illustration of phone with person
+   - Right side: Heading and descriptive text
+   - "SERVICES" CTA button in orange/yellow
+
+4. **Call-to-Action Section**
+
+   - Blue background
+   - Left side: White text content
+   - Right side: Large phone illustration with person
+   - "SERVICES" CTA button with white border
+
+5. **News & Updates Section**
+   - White background
+   - Carousel/slider functionality
+   - Three card layout with navigation arrows
+   - Each card contains:
+   - Image
+   - Title text
+   - Card shadow effects
+   - "GO TO NEWS FEED" button centered below
+
+### Required Assets for Export
+
+1. **Images**
+
+   - Logo and orange dot
+   - Phone illustration with person (Features section)
+   - Phone illustration with person (CTA section)
+   - News article images
+   - Left/Right carousel arrows
+
+2. **Icons**
+
+   - Navigation arrows for carousel
+   - Any UI icons in the phone illustrations
+
+3. **Interactive Elements**
+   - Button hover states
+   - Carousel navigation
+   - Card hover effects
+
+### Responsive Considerations
+
+- Hero section will need text scaling
+- Features card should stack on mobile
+- CTA section should stack on mobile
+- News carousel should adapt to single column on mobile
+- Maintain readable text sizes across breakpoints
+
+### Animation Requirements
+
+- Carousel sliding effect
+- Button hover states
+- Possible scroll animations for sections
+- Card hover effects
+
+This analysis will help us structure our theme development and ensure we capture all necessary design elements. Would you like to focus on any particular aspect to begin the implementation?
+
+### Asset Export Checklist
+
+1. **Logo & Branding**
+   - [ ] "Cool Things" logo with orange dot (#FFB84D)
+   - [ ] Brand font specifications
+2. **Hero Section**
+
+   - [ ] Background image/overlay (turquoise blue #00B2CB)
+   - [ ] "PRODUCTS" button styles (white border, transparent background)
+
+3. **Features Section**
+
+   - [ ] Phone mockup with person illustration (left side)
+   - [ ] Card shadow specifications
+   - [ ] "SERVICES" button (orange/yellow #FFB84D)
+
+4. **CTA Section**
+
+   - [ ] Phone mockup with woman illustration
+   - [ ] Decorative elements (white shapes/patterns if any)
+   - [ ] "SERVICES" button (white border variant)
+
+5. **News & Updates Section**
+
+   - [ ] Carousel navigation arrows (left/right)
+   - [ ] Card shadow specifications
+   - [ ] "GO TO NEWS FEED" button with icon
+   - [ ] Sample news images for testing
+
+6. **UI Elements**
+
+   - [ ] Button states (normal, hover, active)
+   - [ ] Card hover effects
+   - [ ] Shadow values for cards
+   - [ ] Spacing measurements between sections
+
+7. **Responsive Breakpoints**
+   - [ ] Desktop (shown in design)
+   - [ ] Tablet breakpoint specifications
+   - [ ] Mobile breakpoint specifications
+
+docker compose exec wordpress wp plugin install figma-to-wp --activate

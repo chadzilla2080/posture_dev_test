@@ -42,3 +42,5 @@ function cool_things_register_cpt() {
 }
 add_action('init', 'cool_things_register_cpt');
 
+// Remove the Figma setup for now until we get the plugin working
+
