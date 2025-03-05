@@ -1,12 +1,9 @@
-<?php
-/* Template Name: Front Page */
-get_header();
-?>
+<?php get_header(); ?>
 
 <main class="site-main">
     <!-- Hero Section -->
     <section class="hero section section--primary overlay">
-        <div class="hero__content container content--narrow text-center">
+        <div class="hero__content container text-center">
             <h1 class="text-white mb-4">WE HAE A SOLUTION FOR THE<br>EXACT THING YOU NEED.</h1>
             <a href="#" class="button button--outline">PRODUCTS</a>
         </div>

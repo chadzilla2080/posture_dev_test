@@ -3,14 +3,61 @@
 @use '../abstracts' as *;
 
 .hero {
-  background-color: $color-primary;
+  position: relative;
   min-height: 100vh;
-  display: flex;
-  align-items: center;
+  background: $color-primary url('../assets/images/hero-bg.jpg') no-repeat
+    center/cover;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba($color-primary, 0.85); // Overlay color
+  }
 
   &__content {
-    color: $color-white;
-    text-align: center;
+    position: relative;
+    z-index: 1;
+    padding-top: 530px;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding-left: 0;
+    padding-right: 0;
+
+    h1 {
+      font-size: 2.5rem;
+      letter-spacing: 0.02em;
+      line-height: 1.1;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-top: 150px;
+      margin-bottom: $spacing-component * 2;
+      height: auto;
+      width: 100%;
+      padding: 0 24px;
+      white-space: normal;
+      white-space-collapse: collapse;
+      text-wrap-mode: wrap;
+
+      @include respond-to('tablet') {
+        font-size: 3.8rem;
+        margin-top: 150px;
+      }
+
+      @include respond-to('desktop') {
+        font-size: 5.5rem;
+        margin-top: 150px;
+      }
+
+      @include respond-to('wide') {
+        font-size: 6.5rem;
+        margin-top: 150px;
+      }
+    }
   }
 }
 

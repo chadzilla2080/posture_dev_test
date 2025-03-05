@@ -5,7 +5,7 @@
 ?>
     <footer class="site-footer">
         <div class="container">
-            <p>&copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?>. All rights reserved.</p>
+            <p>&copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?></p>
         </div>
     </footer>
 </div><!-- #page -->

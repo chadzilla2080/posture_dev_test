@@ -27,10 +27,26 @@ function posture_cool_things_setup() {
 add_action('after_setup_theme', 'posture_cool_things_setup');
 
 function posture_cool_things_scripts() {
-    wp_enqueue_style('posture-cool-things-style', get_stylesheet_uri(), array(), _S_VERSION);
+    // Main stylesheet
+    wp_enqueue_style(
+        'posture-cool-things-style',
+        get_stylesheet_uri(),
+        array(),
+        _S_VERSION
+    );
+
+    // Dequeue any auto-injected styles
+    wp_dequeue_style('wp-block-library');
+    wp_dequeue_style('classic-theme-styles');
+    
+    // Remove WP emoji stuff
+    remove_action('wp_head', 'print_emoji_detection_script', 7);
+    remove_action('wp_print_styles', 'print_emoji_styles');
 }
 add_action('wp_enqueue_scripts', 'posture_cool_things_scripts');
 
+// Remove inline styles from the header
+remove_action('wp_head', 'wp_custom_css_cb', 101);
 
 function cool_things_register_cpt() {
     register_post_type('product', array(
