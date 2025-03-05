@@ -3,64 +3,63 @@
 get_header();
 ?>
 
-<main id="site-content">
-    <!-- HERO SECTION -->
-    <section class="hero-section" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/hero-bg.jpg');">
-        <div class="hero-content">
-            <h1>We Have a Solution for the Exact Thing You Need</h1>
-            <a href="#" class="btn btn-primary">Products</a>
+<main class="site-main">
+    <!-- Hero Section -->
+    <section class="hero section section--primary overlay">
+        <div class="hero__content container content--narrow text-center">
+            <h1 class="text-white mb-4">WE HAE A SOLUTION FOR THE<br>EXACT THING YOU NEED.</h1>
+            <a href="#" class="button button--outline">PRODUCTS</a>
         </div>
     </section>
 
-    <!-- "WE'RE THE BEST AT THINGS" SECTION -->
-    <section class="info-section">
-        <div class="info-text">
-            <h2>We're the Best at Things</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque iaculis...</p>
-            <a href="#" class="btn btn-secondary">Services</a>
-        </div>
-        <div class="info-graphic">
-            <!-- Example phone illustration (exported from Figma as .svg or .png) -->
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/phone-graphic.png" alt="Phone Graphic">
+    <!-- Features Section -->
+    <section class="features section section--light">
+        <div class="features__card container card">
+            <div class="grid grid--2col items-center gap-2">
+                <div class="features__illustration">
+                    <img src="path/to/phone-mockup.svg" alt="" class="img--contain">
+                </div>
+                <div class="features__content">
+                    <h2 class="mb-2">WE'RE THE BEST AT THINGS</h2>
+                    <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                    <a href="#" class="button button--primary">SERVICES</a>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- "THIS IS WHY THE THING MATTERS" SECTION -->
-    <section class="info-section alt-bg">
-        <h2>This Is Why the Thing Matters</h2>
-        <div class="info-graphic">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/illustration.png" alt="Illustration">
+    <!-- CTA Section -->
+    <section class="cta section section--primary">
+        <div class="cta__content container grid grid--2col items-center gap-2">
+            <div class="cta__text content--narrow">
+                <h2 class="text-white mb-2">THIS IS WHY THE THING MATTERS</h2>
+                <p class="text-white mb-4">Lorem ipsum dolor sit amet...</p>
+                <a href="#" class="button button--outline">SERVICES</a>
+            </div>
+            <div class="cta__illustration">
+                <img src="path/to/phone-mockup-woman.svg" alt="" class="img--contain">
+            </div>
         </div>
-        <a href="#" class="btn btn-secondary">Services</a>
     </section>
 
-    <!-- NEWS & UPDATES SECTION -->
-    <section class="news-section">
-        <h2>News & Updates</h2>
-        <div class="news-grid">
-            <?php
-            // WP Query for latest 3 posts
-            $latest_posts = new WP_Query(array(
-                'posts_per_page' => 3,
-            ));
-            if ($latest_posts->have_posts()) :
-                while ($latest_posts->have_posts()) : $latest_posts->the_post(); ?>
-                    <article class="news-item">
-                        <?php if (has_post_thumbnail()) : ?>
-                            <div class="news-thumb">
-                                <a href="<?php the_permalink(); ?>">
-                                    <?php the_post_thumbnail('medium'); ?>
-                                </a>
-                            </div>
-                        <?php endif; ?>
-                        <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-                        <p><?php echo wp_trim_words(get_the_excerpt(), 20); ?></p>
-                    </article>
-                <?php endwhile;
-                wp_reset_postdata();
-            endif; ?>
+    <!-- News Section -->
+    <section class="news section section--light">
+        <div class="container">
+            <h2 class="text-center mb-4">NEWS & UPDATES</h2>
+            <div class="news__carousel grid grid--3col gap-2 mb-4">
+                <!-- Carousel items -->
+                <article class="card card--hover">
+                    <img src="path/to/news-1.jpg" alt="" class="img--cover">
+                    <div class="p-4">
+                        <h3 class="mb-2">THIS WOULD PERHAPS BE THE MOST AMAZING POST TITLE IN THE HISTORY OF POSTS</h3>
+                    </div>
+                </article>
+                <!-- Repeat for other news items -->
+            </div>
+            <div class="text-center">
+                <a href="#" class="button button--text">GO TO NEWS FEED</a>
+            </div>
         </div>
-        <a href="<?php echo get_permalink(get_option('page_for_posts')); ?>" class="btn btn-primary">Go to News Feed</a>
     </section>
 </main>
 

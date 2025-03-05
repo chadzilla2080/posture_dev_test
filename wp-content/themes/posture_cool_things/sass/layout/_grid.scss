@@ -2,25 +2,25 @@
 
 .grid {
   display: grid;
-  gap: $spacing-gap;
+  gap: $spacing-component;
 
-  &--2-cols {
+  &--2col {
     grid-template-columns: 1fr;
 
-    @include respond-to('medium') {
+    @include respond-to('tablet') {
       grid-template-columns: repeat(2, 1fr);
     }
   }
 
-  &--3-cols {
+  &--3col {
     grid-template-columns: 1fr;
 
-    @include respond-to('medium') {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    @include respond-to('large') {
+    @include respond-to('tablet') {
       grid-template-columns: repeat(3, 1fr);
     }
   }
+}
+
+.container {
+  @include container;
 }

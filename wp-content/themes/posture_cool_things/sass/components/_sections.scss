@@ -1,0 +1,14 @@
+@use '../abstracts' as *;
+
+.section {
+  padding: $spacing-section 0;
+
+  &--primary {
+    background-color: $color-primary;
+    color: $color-white;
+  }
+
+  &--light {
+    background-color: $color-white;
+  }
+}

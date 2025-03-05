@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 // Colors
 $color-primary: #00b2cb; // Blue background
 $color-white: #ffffff; // Text and cards
@@ -7,10 +9,14 @@ $color-accent: #ffb84d; // Logo dot and CTA buttons
 // Typography
 $font-heading: sans-serif; // We'll update this once we extract the exact font
 $font-body: sans-serif; // Same here
+$font-size-base: 16px;
+$line-height-base: 1.5;
 
 // Spacing
+$spacing-unit: 8px;
+$spacing-component: 24px;
 $spacing-section: 80px; // Section padding
-$spacing-component: 40px; // Component spacing
+$spacing-gap: 20px;
 
 // Shadows
 $shadow-card: 0 4px 6px rgba(0, 0, 0, 0.1); // Card shadow

@@ -1,10 +1,55 @@
+@use 'sass:color';
 @use 'sass:math';
 @use '../abstracts' as *;
+
+.hero {
+  background-color: $color-primary;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+
+  &__content {
+    color: $color-white;
+    text-align: center;
+  }
+}
+
+.features {
+  &__card {
+    background: $color-white;
+    box-shadow: $shadow-card;
+  }
+
+  &__illustration {
+    @include respond-to('mobile') {
+      order: 2;
+    }
+  }
+}
+
+.cta {
+  &__illustration {
+    @include respond-to('mobile') {
+      order: 1;
+    }
+  }
+
+  &:hover {
+    color: color.adjust($color-primary, $lightness: -10%);
+  }
+}
+
+.news {
+  &__carousel {
+    position: relative;
+    overflow: hidden;
+  }
+}
 
 .hero-section {
   background-size: cover;
   background-position: center;
-  padding: math.div($spacing-section, 2) $spacing-gap;
+  padding: calc($spacing-section / 2) $spacing-component;
   text-align: center;
   color: $color-white;
   position: relative;
@@ -36,7 +81,7 @@
 .info-section {
   display: flex;
   flex-direction: column;
-  padding: math.div($spacing-section, 2) $spacing-gap;
+  padding: calc($spacing-section / 2) $spacing-gap;
   gap: $spacing-gap;
 
   @include respond-to('medium') {
@@ -63,4 +108,15 @@
       height: auto;
     }
   }
+}
+
+.news-carousel {
+  position: relative;
+  overflow: hidden;
+}
+
+.news-carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }

@@ -1,3 +1,5 @@
+@use '../abstracts' as *;
+
 // Modern CSS Reset
 *,
 *::before,
@@ -8,23 +10,22 @@
 }
 
 html {
-  font-size: 100%;
+  font-size: 16px;
   scroll-behavior: smooth;
 }
 
 body {
+  font-family: $font-body;
+  line-height: 1.5;
+  color: $color-dark;
   min-height: 100vh;
   text-rendering: optimizeSpeed;
-  line-height: 1.5;
 }
 
-img,
-picture,
-video,
-canvas,
-svg {
-  display: block;
+img {
   max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 input,

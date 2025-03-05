@@ -1,20 +1,24 @@
-// Abstracts
+// Tools (no CSS output)
 @use 'abstracts' as *;
 
-// Base
+// Vendor styles (if any)
+// @use 'vendor';
+
+// Base styles
 @use 'base/reset';
 @use 'base/typography';
-@use 'base/utilities';
 
-// Layout
+// Layout & Grid
+@use 'layout/grid';
 @use 'layout/header';
 @use 'layout/footer';
-@use 'layout/grid';
 
 // Components
 @use 'components/buttons';
-@use 'components/navigation';
-@use 'components/news-grid';
+@use 'components/carousel';
 
 // Pages
 @use 'pages/front-page';
+
+// Utilities (should come last to override)
+@use 'base/utilities';

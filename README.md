@@ -357,3 +357,71 @@ docker compose exec wordpress wp plugin install figma-to-wp --activate
 - [ ] Button hover states
 - [ ] Card hover effects
 - [ ] Carousel interaction
+
+### Figma Asset Export Guide
+
+#### Media Types
+
+- [ ] Static Images (PNG/SVG)
+- [ ] Animated Elements (GIF/MP4)
+- [ ] Background Videos
+- [ ] Interactive States (hover/click)
+
+#### Export Methods
+
+1. **For Static Elements**:
+
+   - Right-click > Export
+   - Select appropriate format (SVG for vectors, PNG for images)
+   - Set scale (2x for retina if needed)
+
+2. **For Animated/Video Content**:
+
+   - Check Smart Animate layers
+   - Look for embedded videos/GIFs
+   - Export as MP4 if available
+   - Note any animation timings/transitions
+
+3. **For Interactive Elements**:
+   - Document all states (normal/hover/active)
+   - Export each state separately
+   - Note transition effects
+
+### Figma Export Checklist (By Section)
+
+#### 1. Header Assets
+
+- [ ] Logo "Cool Things" text
+- [ ] Orange dot
+- [ ] Combined logo as SVG (if possible)
+
+#### 2. Hero Section Assets
+
+- [ ] Background overlay/pattern
+- [ ] "PRODUCTS" button (normal state)
+- [ ] "PRODUCTS" button (hover state)
+
+#### 3. Features Card Assets
+
+- [ ] Phone mockup with person
+- [ ] Card shadow/background
+- [ ] "SERVICES" button (orange version)
+
+#### 4. CTA Section Assets
+
+- [ ] Phone mockup with woman
+- [ ] Any background patterns/elements
+- [ ] "SERVICES" button (white version)
+
+#### 5. News Section Assets
+
+- [ ] Left arrow icon
+- [ ] Right arrow icon
+- [ ] Sample news image
+- [ ] "GO TO NEWS FEED" button
+
+Export Format Guide:
+
+- Logos/Icons: SVG preferred
+- Photos/Complex Images: PNG (2x for retina)
+- UI Elements: SVG where possible
