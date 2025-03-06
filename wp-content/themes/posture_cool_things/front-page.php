@@ -4,12 +4,34 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero__background">
-            <img src="<?php echo get_theme_file_uri('assets/images/Rectangle1.svg'); ?>" alt="">
+            <?php 
+            $hero_image = get_field('hero_background_image');
+            if ($hero_image): ?>
+                <img src="<?php echo esc_url($hero_image); ?>" alt="">
+            <?php else: ?>
+                <img src="<?php echo get_theme_file_uri('assets/images/Rectangle1.svg'); ?>" alt="">
+            <?php endif; ?>
         </div>
         <div class="hero__overlay"></div>
         <div class="hero__content container text-center">
-            <h1 class="text-white mb-4">WE HAE A SOLUTION FOR THE EXACT THING YOU NEED.</h1>
-            <a href="#" class="button button--outline">PRODUCTS</a>
+            <h1 class="text-white mb-4">
+                <?php 
+                $hero_title = get_field('hero_title');
+                if ($hero_title): 
+                    echo esc_html($hero_title);
+                else:
+                    echo 'WE HAVE A SOLUTION FOR THE EXACT THING YOU NEED.';
+                endif; 
+                ?>
+            </h1>
+
+            <?php 
+            $button_text = get_field('hero_button_text');
+            $button_url = get_field('hero_button_url');
+            ?>
+            <a href="<?php echo esc_url($button_url ?: '#'); ?>" class="button button--outline">
+                <?php echo esc_html($button_text ?: 'PRODUCTS'); ?>
+            </a>
         </div>
     </section>
 
