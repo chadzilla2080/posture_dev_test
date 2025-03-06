@@ -13,6 +13,13 @@
 
 # Docker Compose Development Mode
 
+If you make changes to the Dockerfile or Docker Compose File and you are running docker watchers
+
+- docker compose down -v
+- docker compose up --build && docker compose watch
+
+Then you can run development mode with the following commands:
+
 Run `docker compose up -d` in one terminal to start the container in "development mode"
 
 Run `docker compose exec wordpress npm run watch-sass` in another terminal to watch for changes in the `sass` and `js` folders and automatically compile them.

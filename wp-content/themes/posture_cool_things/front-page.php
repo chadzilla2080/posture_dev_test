@@ -2,23 +2,27 @@
 
 <main class="site-main">
     <!-- Hero Section -->
-    <section class="hero section section--primary overlay">
+    <section class="hero">
+        <div class="hero__background">
+            <img src="<?php echo get_theme_file_uri('assets/images/Rectangle1.svg'); ?>" alt="">
+        </div>
+        <div class="hero__overlay"></div>
         <div class="hero__content container text-center">
-            <h1 class="text-white mb-4">WE HAE A SOLUTION FOR THE<br>EXACT THING YOU NEED.</h1>
+            <h1 class="text-white mb-4">WE HAE A SOLUTION FOR THE EXACT THING YOU NEED.</h1>
             <a href="#" class="button button--outline">PRODUCTS</a>
         </div>
     </section>
 
     <!-- Features Section -->
-    <section class="features section section--light">
-        <div class="features__card container card">
-            <div class="grid grid--2col items-center gap-2">
+    <section class="features">
+        <div class="features__card">
+            <div class="features__content">
                 <div class="features__illustration">
-                    <img src="path/to/phone-mockup.svg" alt="" class="img--contain">
+                    <img src="<?php echo get_theme_file_uri('assets/images/Man and phone 1.svg'); ?>" alt="Man with phone illustration">
                 </div>
-                <div class="features__content">
-                    <h2 class="mb-2">WE'RE THE BEST AT THINGS</h2>
-                    <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                <div class="features__text">
+                    <h2>WE'RE THE BEST AT THINGS</h2>
+                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
                     <a href="#" class="button button--primary">SERVICES</a>
                 </div>
             </div>
@@ -26,35 +30,77 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="cta section section--primary">
-        <div class="cta__content container grid grid--2col items-center gap-2">
-            <div class="cta__text content--narrow">
-                <h2 class="text-white mb-2">THIS IS WHY THE THING MATTERS</h2>
-                <p class="text-white mb-4">Lorem ipsum dolor sit amet...</p>
-                <a href="#" class="button button--outline">SERVICES</a>
-            </div>
-            <div class="cta__illustration">
-                <img src="path/to/phone-mockup-woman.svg" alt="" class="img--contain">
+    <section class="cta">
+        <div class="cta__card">
+            <div class="cta__content">
+                <div class="cta__text">
+                    <h2>THIS IS WHY THE THING MATTERS</h2>
+                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
+                    <a href="#" class="button button--outline">SERVICES</a>
+                </div>
+                <div class="cta__illustration">
+                    <img src="<?php echo get_theme_file_uri('assets/images/Woman on phone 1.svg'); ?>" alt="Woman with phone illustration">
+                </div>
             </div>
         </div>
     </section>
 
     <!-- News Section -->
-    <section class="news section section--light">
+    <section class="news">
         <div class="container">
-            <h2 class="text-center mb-4">NEWS & UPDATES</h2>
-            <div class="news__carousel grid grid--3col gap-2 mb-4">
-                <!-- Carousel items -->
-                <article class="card card--hover">
-                    <img src="path/to/news-1.jpg" alt="" class="img--cover">
-                    <div class="p-4">
-                        <h3 class="mb-2">THIS WOULD PERHAPS BE THE MOST AMAZING POST TITLE IN THE HISTORY OF POSTS</h3>
+            <h2 class="news__title">NEWS & UPDATES</h2>
+            
+            <div class="news__carousel">
+                <?php
+                // WP Query for latest posts
+                $args = array(
+                    'post_type' => 'post',
+                    'posts_per_page' => 3,
+                    'orderby' => 'date',
+                    'order' => 'DESC'
+                );
+                
+                $news_query = new WP_Query($args);
+                
+                if ($news_query->have_posts()) : ?>
+                    <div class="news__grid">
+                        <?php while ($news_query->have_posts()) : $news_query->the_post(); ?>
+                            <article class="news__card">
+                                <?php if (has_post_thumbnail()) : ?>
+                                    <div class="news__image">
+                                        <?php the_post_thumbnail('news-thumbnail', array('class' => 'img--cover')); ?>
+                                    </div>
+                                <?php endif; ?>
+                                
+                                <div class="news__content">
+                                    <h3 class="news__card-title">
+                                        <a href="<?php the_permalink(); ?>">
+                                            <?php the_title(); ?>
+                                        </a>
+                                    </h3>
+                                </div>
+                            </article>
+                        <?php endwhile; ?>
                     </div>
-                </article>
-                <!-- Repeat for other news items -->
+
+                    <div class="news__navigation">
+                        <button class="news__nav-button news__nav-button--prev" aria-label="Previous slides">
+                            <span class="arrow-left"></span>
+                        </button>
+                        <button class="news__nav-button news__nav-button--next" aria-label="Next slides">
+                            <span class="arrow-right"></span>
+                        </button>
+                    </div>
+                <?php endif; 
+                wp_reset_postdata(); ?>
             </div>
-            <div class="text-center">
-                <a href="#" class="button button--text">GO TO NEWS FEED</a>
+
+            <div class="news__footer">
+                <a href="<?php echo get_permalink(get_option('page_for_posts')); ?>" class="fancy-button">
+                    <span class="fancy-button__accent-vertical"></span>
+                    <span class="fancy-button__text">GO TO NEWS FEED</span>
+                    <span class="fancy-button__accent-horizontal"></span>
+                </a>
             </div>
         </div>
     </section>

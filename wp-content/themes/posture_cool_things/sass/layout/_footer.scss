@@ -1,15 +1,28 @@
 @use '../abstracts' as *;
 
 .site-footer {
-  padding: $spacing-section $spacing-gap;
-  background-color: $color-dark;
-  color: $color-white;
+  background-color: $color-primary;
+  padding: 20px 0;
+  border-top: 1px solid rgba($color-white, 0.1);
 
-  a {
+  &__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__copyright {
     color: $color-white;
+    font-size: 0.875rem;
+    margin: 0;
+    text-align: center;
+  }
 
-    &:hover {
-      color: $color-primary;
+  @media (max-width: 600px) {
+    padding: 15px 0;
+
+    &__copyright {
+      font-size: 0.8125rem;
     }
   }
 }

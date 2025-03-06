@@ -19,10 +19,18 @@ $spacing-section: 80px; // Section padding
 $spacing-gap: 20px;
 
 // Shadows
-$shadow-card: 0 4px 6px rgba(0, 0, 0, 0.1); // Card shadow
+$shadow-card: 0 4px 6px rgba(0, 0, 0, 0.1); // Default card shadow
+$shadow-card-prominent: 0 10px 30px rgba(0, 0, 0, 0.15); // More prominent shadow for feature cards
 
 // Breakpoints
 $breakpoint-mobile: 768px;
 $breakpoint-tablet: 1024px;
 $breakpoint-desktop: 1440px;
 $breakpoint-wide: 1920px;
+
+// Mobile Breakpoints
+$breakpoint-xs: 300px;
+$breakpoint-sm: 400px;
+$breakpoint-md: 500px;
+$breakpoint-lg: 600px;
+$breakpoint-xl: 700px;

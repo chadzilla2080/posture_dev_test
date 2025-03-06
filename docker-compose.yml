@@ -27,17 +27,13 @@ services:
     volumes:
       # Named volume for WordPress core
       - wp_data:/var/www/html
-      # Fix: Correct path to theme directory
-      - ./wp-content/themes/posture_cool_things:/var/www/html/wp-content/themes/posture_cool_things
-
-      # Add: Map plugins directory
+      # Map only non-watched directories
       - ./wp-content/plugins:/var/www/html/wp-content/plugins
     develop:
       watch:
-        - action: sync
-          # Fix: Correct path to theme directory
-          path: ./wp-content/themes/posture_cool_things
-          target: /var/www/html/wp-content/themes/posture_cool_things
+        - action: sync+restart # Changed to sync+restart for SASS compilation
+          path: ./wp-content/themes
+          target: /var/www/html/wp-content/themes
           ignore:
             - '**/.git'
             - '**/node_modules'

@@ -60,3 +60,11 @@ add_action('init', 'cool_things_register_cpt');
 
 // Remove the Figma setup for now until we get the plugin working
 
+// Add custom image size for news thumbnails
+add_image_size('news-thumbnail', 384, 212, true);
+
+function add_google_fonts() {
+    wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap', array(), null);
+}
+add_action('wp_enqueue_scripts', 'add_google_fonts');
+
