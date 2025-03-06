@@ -1,3 +1,57 @@
+# Cool Things WordPress Theme
+
+A modern, responsive WordPress theme built with SASS and Docker. Features a dynamic front page with hero section, features showcase, CTA sections, and a news feed.
+
+## Theme Structure
+
+```
+posture_cool_things/
+├── assets/
+│   ├── images/      # Theme images and SVGs
+│   ├── js/          # JavaScript files
+│   └── sass/        # SASS structure
+│       ├── abstracts/   # Variables, mixins, tokens
+│       ├── base/        # Base styles
+│       ├── components/  # Reusable components
+│       ├── layout/      # Layout structures
+│       └── pages/       # Page-specific styles
+├── dist/            # Compiled assets
+├── template-parts/  # Reusable template parts
+├── functions.php    # Theme functionality
+├── front-page.php   # Homepage template
+└── style.css       # Theme information
+```
+
+## Project Setup
+
+### Prerequisites
+
+- Docker Desktop
+- Node.js (v14+)
+- npm (v6+)
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone [repository-url]
+```
+
+2. Start Docker environment:
+
+```bash
+# Initial setup
+docker compose up -d
+
+# Watch for changes
+docker compose watch
+
+# If you modify Docker files
+docker compose down -v
+docker compose up --build && docker compose watch
+```
+
 # Docker Setup, Container Commands
 
 1. Install Docker Desktop
@@ -30,9 +84,6 @@ Run `docker compose exec wordpress npm run watch-sass` in another terminal to wa
 - The container will also watch for changes in the `wp-content/uploads` folder and will automatically sync them to the container.
 
 # WordPress Admin
-
-- The WordPress admin is available at `http://localhost:8080/wp-admin`
-- The WordPress admin credentials are `chadzilla` for the username and `starkindustries` for the password
 
 # WordPress Theme Development
 
@@ -432,3 +483,56 @@ Export Format Guide:
 - Logos/Icons: SVG preferred
 - Photos/Complex Images: PNG (2x for retina)
 - UI Elements: SVG where possible
+
+## Theme Features
+
+### Front Page Sections
+
+1. **Hero Section**
+
+   - Full-width background with overlay
+   - Responsive typography
+   - Call-to-action button
+
+2. **Features Section**
+
+   - Card layout with enhanced shadow
+   - SVG illustrations
+   - Responsive content
+
+3. **CTA Section**
+
+   - Brand color background
+   - Offset image positioning
+   - White text on brand background
+
+4. **News Section**
+   - Dynamic post grid (3 columns)
+   - Custom image sizes (384x212)
+   - Hover effects and transitions
+   - "Go to News Feed" fancy button
+
+### WordPress Integration
+
+- Custom image sizes for news thumbnails
+- Dynamic post queries
+- Proper template hierarchy
+- Theme setup functions
+- Google Fonts integration
+
+## Browser Support
+
+- Last 2 versions of major browsers
+- IE 11 (basic support)
+- Mobile-first approach
+
+## Project Information
+
+- Version: 1.0.0
+- Author: Chad Buie
+- Description: Technical assessment project for Posture Interactive
+- License: ISC
+
+---
+
+**Note:** This is a technical assessment project and is not open for public contributions.
