@@ -1,14 +1,30 @@
 <?php
 /**
  * Template Name: Blog Template
+ * Template Post Type: page
  * 
  * A two-column blog template with sidebar
  */
+
+// Add body class for blog template
+add_filter('body_class', function($classes) {
+    $classes[] = 'page-template-blog-template';
+    return $classes;
+});
 
 get_header(); ?>
 
 <main class="site-main blog-page">
     <div class="container">
+        <header class="blog-page__header">
+            <h1 class="blog-page__title"><?php the_title(); ?></h1>
+            <?php if (get_field('blog_description')): ?>
+                <div class="blog-page__description">
+                    <?php the_field('blog_description'); ?>
+                </div>
+            <?php endif; ?>
+        </header>
+
         <div class="blog-grid">
             <div class="blog-grid__main">
                 <?php

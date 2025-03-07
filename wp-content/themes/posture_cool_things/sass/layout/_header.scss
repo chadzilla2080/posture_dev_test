@@ -178,4 +178,33 @@
       }
     }
   }
+
+  // Update blog-specific header styles
+  .page-template-blog-template &,
+  .blog-page &,
+  .single-post &,
+  .blog & {
+    position: relative;
+    background-color: $color-primary;
+
+    .logo {
+      img {
+        filter: brightness(1);
+      }
+    }
+
+    .main-navigation {
+      a {
+        color: $color-white;
+
+        &:hover {
+          color: $color-accent;
+        }
+
+        &::after {
+          background-color: $color-accent;
+        }
+      }
+    }
+  }
 }
