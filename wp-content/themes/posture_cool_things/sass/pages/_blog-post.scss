@@ -1,4 +1,6 @@
 @use '../abstracts' as *;
+@use 'sass:color';
+@use 'sass:math';
 
 .blog-post-page {
   padding: $spacing-section 0;
@@ -70,7 +72,7 @@
       text-decoration: underline;
 
       &:hover {
-        color: darken($color-primary, 10%);
+        color: color.adjust($color-primary, $lightness: -10%);
       }
     }
 

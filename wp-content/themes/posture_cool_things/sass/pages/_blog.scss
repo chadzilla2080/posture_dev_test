@@ -1,4 +1,5 @@
 @use '../abstracts' as *;
+@use 'sass:math';
 
 .blog-page {
   padding: $spacing-section 0;
@@ -7,7 +8,7 @@
 .blog-grid {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  gap: $spacing-component * 2;
+  gap: math.div($spacing-component * 2, 2);
 
   @media (max-width: $breakpoint-tablet) {
     grid-template-columns: 1fr;
@@ -16,18 +17,18 @@
   &__main {
     .blog-posts {
       display: grid;
-      gap: $spacing-component * 2;
+      gap: math.div($spacing-component * 2, 2);
     }
   }
 
   @media (max-width: $breakpoint-mobile) {
-    gap: $spacing-component;
+    gap: math.div($spacing-component, 2);
   }
 
   &__sidebar {
     @media (max-width: $breakpoint-tablet) {
       position: static;
-      margin-top: $spacing-component * 2;
+      margin-top: math.div($spacing-component * 2, 2);
     }
   }
 }
@@ -54,11 +55,11 @@
   }
 
   &__content {
-    padding: $spacing-component;
+    padding: math.div($spacing-component, 2);
   }
 
   &__title {
-    margin-bottom: $spacing-unit;
+    margin-bottom: math.div($spacing-unit, 2);
 
     a {
       color: $color-dark;
@@ -72,7 +73,7 @@
 
   &__meta {
     color: rgba($color-dark, 0.6);
-    margin-bottom: $spacing-component;
+    margin-bottom: math.div($spacing-component, 2);
   }
 
   @media (max-width: $breakpoint-mobile) {
@@ -81,7 +82,7 @@
     }
 
     &__content {
-      padding: $spacing-unit;
+      padding: math.div($spacing-unit, 2);
     }
 
     &__title {
@@ -92,19 +93,19 @@
 
 .blog-sidebar {
   position: sticky;
-  top: $spacing-component;
+  top: math.div($spacing-component, 2);
   background: $color-white;
-  padding: $spacing-component;
+  padding: math.div($spacing-component, 2);
   border-radius: 4px;
   box-shadow: $shadow-card;
 
   h4 {
     color: $color-primary;
-    margin-bottom: $spacing-unit;
+    margin-bottom: math.div($spacing-unit, 2);
   }
 
   &__categories {
-    margin-bottom: $spacing-component * 2;
+    margin-bottom: math.div($spacing-component * 2, 2);
 
     ul {
       list-style: none;
@@ -113,7 +114,7 @@
     }
 
     li {
-      margin-bottom: $spacing-unit;
+      margin-bottom: math.div($spacing-unit, 2);
 
       a {
         color: $color-dark;
@@ -128,25 +129,25 @@
 
   // Newsletter Section
   &__newsletter {
-    margin-bottom: $spacing-component * 2;
-    padding: $spacing-component;
+    margin-bottom: math.div($spacing-component * 2, 2);
+    padding: math.div($spacing-component, 2);
     background: rgba($color-primary, 0.05);
     border-radius: 4px;
 
     h4 {
       color: $color-primary;
-      margin-bottom: $spacing-unit;
+      margin-bottom: math.div($spacing-unit, 2);
     }
 
     p {
       font-size: 0.9rem;
-      margin-bottom: $spacing-unit;
+      margin-bottom: math.div($spacing-unit, 2);
     }
 
     .newsletter-form {
       display: flex;
       flex-direction: column;
-      gap: $spacing-unit;
+      gap: math.div($spacing-unit, 2);
 
       input[type='email'] {
         padding: 0.75rem;
@@ -176,18 +177,18 @@
 
   // Featured Posts Section
   &__featured {
-    margin-bottom: $spacing-component * 2;
+    margin-bottom: math.div($spacing-component * 2, 2);
 
     .featured-post {
       display: flex;
-      gap: $spacing-unit;
-      padding: $spacing-unit 0;
+      gap: math.div($spacing-unit, 2);
+      padding: math.div($spacing-unit, 2) 0;
       border-bottom: 1px solid rgba($color-dark, 0.1);
       text-decoration: none;
       transition: transform 0.3s ease;
 
       &:hover {
-        transform: translateX($spacing-unit/2);
+        transform: translateX(math.div($spacing-unit, 2));
       }
 
       &__image {
@@ -209,7 +210,7 @@
         h5 {
           color: $color-dark;
           font-size: 0.9rem;
-          margin-bottom: $spacing-unit/2;
+          margin-bottom: math.div($spacing-unit, 2);
         }
 
         time {
@@ -235,14 +236,14 @@
 
   // Social Links Section
   &__social {
-    margin-top: $spacing-component * 2;
-    padding-top: $spacing-component;
+    margin-top: math.div($spacing-component * 2, 2);
+    padding-top: math.div($spacing-component, 2);
     border-top: 1px solid rgba($color-dark, 0.1);
 
     .social-links {
       display: flex;
-      gap: $spacing-unit;
-      margin-top: $spacing-unit;
+      gap: math.div($spacing-unit, 2);
+      margin-top: math.div($spacing-unit, 2);
     }
 
     .social-link {
@@ -294,7 +295,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: $spacing-unit/2 0;
+        padding: math.div($spacing-unit, 2) 0;
         border-bottom: 1px solid rgba($color-dark, 0.1);
 
         &:last-child {
@@ -303,7 +304,7 @@
 
         a {
           position: relative;
-          padding-left: $spacing-unit;
+          padding-left: math.div($spacing-unit, 2);
 
           &:before {
             content: '';
@@ -328,19 +329,19 @@
   }
 
   @media (max-width: $breakpoint-tablet) {
-    padding: $spacing-unit;
+    padding: math.div($spacing-unit, 2);
   }
 }
 
 // Author Box
 .author-box {
   display: flex;
-  gap: $spacing-component;
-  padding: $spacing-component;
+  gap: math.div($spacing-component, 2);
+  padding: math.div($spacing-component, 2);
   background: $color-white;
   border-radius: 4px;
   box-shadow: $shadow-card;
-  margin: $spacing-component 0;
+  margin: math.div($spacing-component, 2) 0;
 
   @media (max-width: $breakpoint-mobile) {
     flex-direction: column;
@@ -365,13 +366,13 @@
 
   &__name {
     color: $color-dark;
-    margin-bottom: $spacing-unit;
+    margin-bottom: math.div($spacing-unit, 2);
     font-size: 1.25rem;
   }
 
   &__bio {
     color: rgba($color-dark, 0.8);
-    margin-bottom: $spacing-unit;
+    margin-bottom: math.div($spacing-unit, 2);
     font-size: 0.95rem;
     line-height: 1.6;
   }
@@ -384,14 +385,14 @@
 
 // Pagination responsive
 .pagination {
-  margin-top: $spacing-component * 2;
+  margin-top: math.div($spacing-component * 2, 2);
   display: flex;
   justify-content: center;
-  gap: $spacing-unit;
+  gap: math.div($spacing-unit, 2);
 
   @media (max-width: $breakpoint-mobile) {
     flex-wrap: wrap;
-    gap: $spacing-unit/2;
+    gap: math.div($spacing-unit, 2);
 
     .page-numbers {
       padding: 0.5rem 0.75rem;

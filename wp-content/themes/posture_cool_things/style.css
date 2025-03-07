@@ -1258,7 +1258,7 @@ a:hover {
 .blog-grid {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  gap: 48px;
+  gap: 24px;
 }
 @media (max-width: 1024px) {
   .blog-grid {
@@ -1267,17 +1267,17 @@ a:hover {
 }
 .blog-grid__main .blog-posts {
   display: grid;
-  gap: 48px;
+  gap: 24px;
 }
 @media (max-width: 768px) {
   .blog-grid {
-    gap: 24px;
+    gap: 12px;
   }
 }
 @media (max-width: 1024px) {
   .blog-grid__sidebar {
     position: static;
-    margin-top: 48px;
+    margin-top: 24px;
   }
 }
 
@@ -1300,10 +1300,10 @@ a:hover {
   object-fit: cover;
 }
 .blog-post__content {
-  padding: 24px;
+  padding: 12px;
 }
 .blog-post__title {
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 .blog-post__title a {
   color: #2d3047;
@@ -1314,14 +1314,14 @@ a:hover {
 }
 .blog-post__meta {
   color: rgba(45, 48, 71, 0.6);
-  margin-bottom: 24px;
+  margin-bottom: 12px;
 }
 @media (max-width: 768px) {
   .blog-post__image {
     height: 200px;
   }
   .blog-post__content {
-    padding: 8px;
+    padding: 4px;
   }
   .blog-post__title {
     font-size: 1.25rem;
@@ -1330,18 +1330,18 @@ a:hover {
 
 .blog-sidebar {
   position: sticky;
-  top: 24px;
+  top: 12px;
   background: #ffffff;
-  padding: 24px;
+  padding: 12px;
   border-radius: 4px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 .blog-sidebar h4 {
   color: #00b2cb;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 .blog-sidebar__categories {
-  margin-bottom: 48px;
+  margin-bottom: 24px;
 }
 .blog-sidebar__categories ul {
   list-style: none;
@@ -1349,7 +1349,7 @@ a:hover {
   margin: 0;
 }
 .blog-sidebar__categories li {
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 .blog-sidebar__categories li a {
   color: #2d3047;
@@ -1359,23 +1359,23 @@ a:hover {
   color: #00b2cb;
 }
 .blog-sidebar__newsletter {
-  margin-bottom: 48px;
-  padding: 24px;
+  margin-bottom: 24px;
+  padding: 12px;
   background: rgba(0, 178, 203, 0.05);
   border-radius: 4px;
 }
 .blog-sidebar__newsletter h4 {
   color: #00b2cb;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 .blog-sidebar__newsletter p {
   font-size: 0.9rem;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 .blog-sidebar__newsletter .newsletter-form {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 4px;
 }
 .blog-sidebar__newsletter .newsletter-form input[type=email] {
   padding: 0.75rem;
@@ -1396,12 +1396,12 @@ a:hover {
   }
 }
 .blog-sidebar__featured {
-  margin-bottom: 48px;
+  margin-bottom: 24px;
 }
 .blog-sidebar__featured .featured-post {
   display: flex;
-  gap: 8px;
-  padding: 8px 0;
+  gap: 4px;
+  padding: 4px 0;
   border-bottom: 1px solid rgba(45, 48, 71, 0.1);
   text-decoration: none;
   transition: transform 0.3s ease;
@@ -1442,14 +1442,14 @@ a:hover {
   }
 }
 .blog-sidebar__social {
-  margin-top: 48px;
-  padding-top: 24px;
+  margin-top: 24px;
+  padding-top: 12px;
   border-top: 1px solid rgba(45, 48, 71, 0.1);
 }
 .blog-sidebar__social .social-links {
   display: flex;
-  gap: 8px;
-  margin-top: 8px;
+  gap: 4px;
+  margin-top: 4px;
 }
 .blog-sidebar__social .social-link {
   display: flex;
@@ -1497,7 +1497,7 @@ a:hover {
 }
 .blog-sidebar__categories ul li a {
   position: relative;
-  padding-left: 8px;
+  padding-left: 4px;
 }
 .blog-sidebar__categories ul li a:before {
   content: "";
@@ -1517,18 +1517,18 @@ a:hover {
 }
 @media (max-width: 1024px) {
   .blog-sidebar {
-    padding: 8px;
+    padding: 4px;
   }
 }
 
 .author-box {
   display: flex;
-  gap: 24px;
-  padding: 24px;
+  gap: 12px;
+  padding: 12px;
   background: #ffffff;
   border-radius: 4px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin: 24px 0;
+  margin: 12px 0;
 }
 @media (max-width: 768px) {
   .author-box {
@@ -1551,12 +1551,12 @@ a:hover {
 }
 .author-box__name {
   color: #2d3047;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
   font-size: 1.25rem;
 }
 .author-box__bio {
   color: rgba(45, 48, 71, 0.8);
-  margin-bottom: 8px;
+  margin-bottom: 4px;
   font-size: 0.95rem;
   line-height: 1.6;
 }
@@ -1566,10 +1566,10 @@ a:hover {
 }
 
 .pagination {
-  margin-top: 48px;
+  margin-top: 24px;
   display: flex;
   justify-content: center;
-  gap: 8px;
+  gap: 4px;
 }
 @media (max-width: 768px) {
   .pagination {
