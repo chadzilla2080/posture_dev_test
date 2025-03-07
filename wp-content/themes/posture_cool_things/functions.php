@@ -40,6 +40,7 @@ if (!defined('POSTURE_COOL_THINGS_PATH')) {
  * 7. Add Google Fonts to the front end - See Line 191
  * 8. Disable Gutenberg editor for the front page - See Line 200
  * 9. Remove default editor from specific pages and templates - See Line 210    
+ * 10. Register ACF Fields for Blog Sidebar - See Line 425
  * 
  *  Author: Chad Buie
  *  Date: 2025-03-07
@@ -400,4 +401,61 @@ function remove_editor_from_pages(): void {
     }
 }
 add_action(hook_name: 'admin_init', callback: 'remove_editor_from_pages');
+
+/**
+ * Register ACF Fields for Blog Sidebar
+ * 
+ * Using regular ACF (free version)
+ * 
+ *  Author: Chad Buie
+ *  Date: 2025-03-07
+ * 
+ * @since 1.0.0
+ * @return void
+ *  
+ *  Notes:
+ *   - Used acf_add_local_field_group() to add the field group to the post type.
+ *   - Used the key parameter to add the field group to the post type at the correct key.
+ *   - Used the title parameter to add the field group to the post type at the correct title.
+ *   - Used the fields parameter to add the field group to the post type at the correct fields.
+ *   - Used the location parameter to add the field group to the post type at the correct location.
+ * 
+ * @see https://www.advancedcustomfields.com/resources/acf_add_local_field_group/
+ * 
+ */
+function posture_register_acf_fields(): void {
+    if (!function_exists(function: 'acf_add_local_field_group')) {
+        return;
+    }
+
+    acf_add_local_field_group(field_group: array(
+        'key' => 'group_blog_sidebar',
+        'title' => 'Blog Sidebar Settings',
+        'fields' => array(
+            array(
+                'key' => 'field_sidebar_title',
+                'label' => 'Sidebar Title',
+                'name' => 'sidebar_title',
+                'type' => 'text',
+            ),
+            array(
+                'key' => 'field_show_categories',
+                'label' => 'Show Categories',
+                'name' => 'show_categories',
+                'type' => 'true_false',
+                'default_value' => 1,
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'page_template',
+                    'operator' => '==',
+                    'value' => 'templates/blog-template.php',
+                ),
+            ),
+        ),
+    ));
+}
+add_action(hook_name: 'acf/init', callback: 'posture_register_acf_fields', priority: 10);
 

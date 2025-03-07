@@ -7,6 +7,7 @@
 // Base styles
 @use 'base/reset';
 @use 'base/typography';
+@use 'base/print';
 
 // Layout & Grid
 @use 'layout/grid';
@@ -19,6 +20,8 @@
 
 // Pages
 @use 'pages/front-page';
+@use 'pages/blog-post';
+@use 'pages/blog';
 
 // Utilities (should come last to override)
 @use 'base/utilities';

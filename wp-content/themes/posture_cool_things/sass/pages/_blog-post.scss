@@ -1,0 +1,84 @@
+@use '../abstracts' as *;
+
+.blog-post-page {
+  padding: $spacing-section 0;
+  background-color: $color-white;
+}
+
+.blog-post-single {
+  max-width: 800px;
+  margin: 0 auto;
+
+  &__header {
+    text-align: center;
+    margin-bottom: $spacing-component * 2;
+  }
+
+  &__title {
+    font-family: $font-heading;
+    color: $color-dark;
+    font-size: 2.5rem;
+    margin-bottom: $spacing-unit;
+
+    @media (max-width: $breakpoint-mobile) {
+      font-size: 2rem;
+    }
+  }
+
+  &__meta {
+    color: rgba($color-dark, 0.6);
+    font-size: 0.9rem;
+
+    .separator {
+      margin: 0 $spacing-unit;
+    }
+  }
+
+  &__image {
+    margin: -#{$spacing-component * 2} -#{$spacing-component} $spacing-component;
+
+    @media (min-width: $breakpoint-tablet) {
+      margin: -#{$spacing-component * 3} 0 $spacing-component * 2;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__content {
+    font-family: $font-body;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: $color-dark;
+
+    p {
+      margin-bottom: $spacing-component;
+    }
+
+    h2,
+    h3,
+    h4 {
+      font-family: $font-heading;
+      color: $color-dark;
+      margin: $spacing-component 0 $spacing-unit;
+    }
+
+    a {
+      color: $color-primary;
+      text-decoration: underline;
+
+      &:hover {
+        color: darken($color-primary, 10%);
+      }
+    }
+
+    blockquote {
+      border-left: 4px solid $color-primary;
+      padding-left: $spacing-component;
+      margin: $spacing-component 0;
+      font-style: italic;
+    }
+  }
+}

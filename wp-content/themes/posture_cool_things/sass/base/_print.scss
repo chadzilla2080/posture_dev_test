@@ -1,0 +1,124 @@
+@media print {
+  // Hide unnecessary elements
+  .site-header,
+  .site-footer,
+  .blog-sidebar,
+  .pagination,
+  .blog-post__meta,
+  .button,
+  .social-links,
+  .newsletter-form {
+    display: none !important;
+  }
+
+  // Reset background colors and shadows
+  body {
+    background: none;
+    color: #000;
+  }
+
+  .blog-post,
+  .author-box {
+    box-shadow: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    page-break-inside: avoid;
+  }
+
+  // Optimize typography for print
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #000;
+    margin-bottom: 1cm;
+    page-break-after: avoid;
+  }
+
+  p,
+  li {
+    orphans: 3;
+    widows: 3;
+  }
+
+  // Show URLs for links
+  a {
+    color: #000;
+    text-decoration: none;
+
+    &[href^='http']:after {
+      content: ' (' attr(href) ')';
+      font-size: 0.9em;
+      font-style: italic;
+    }
+  }
+
+  // Optimize images
+  img {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+  }
+
+  .blog-post__image {
+    height: auto !important;
+    margin-bottom: 1cm;
+
+    img {
+      height: auto !important;
+    }
+  }
+
+  // Author box print optimization
+  .author-box {
+    border-top: 1px solid #000;
+    margin-top: 2cm;
+    padding-top: 1cm;
+
+    &__avatar {
+      img {
+        border: 1px solid #000;
+      }
+    }
+
+    &__bio {
+      margin-bottom: 0.5cm;
+    }
+  }
+
+  // Page breaks and margins
+  @page {
+    margin: 2cm;
+  }
+
+  // Layout adjustments
+  .blog-grid {
+    display: block;
+    width: 100%;
+  }
+
+  .blog-post__content {
+    width: 100%;
+  }
+
+  // Code blocks
+  pre,
+  code {
+    background: none;
+    border: 1px solid #000;
+    page-break-inside: avoid;
+  }
+
+  // Tables
+  table {
+    page-break-inside: avoid;
+    border-collapse: collapse;
+
+    th,
+    td {
+      border: 1px solid #000;
+    }
+  }
+}
