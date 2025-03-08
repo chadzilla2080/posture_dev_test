@@ -83,127 +83,9 @@ Run `docker compose exec wordpress npm run watch-sass` in another terminal to wa
 - The container will also watch for changes in the `wp-content/languages` folder and will automatically sync them to the container.
 - The container will also watch for changes in the `wp-content/uploads` folder and will automatically sync them to the container.
 
-# WordPress Admin
-
-# WordPress Theme Development
-
-- The theme is located in the `wp-content/themes/posture_cool_things` folder
-- The `sass` and `js` folders are compiled to the `wp-content/themes/posture_cool_things/dist` folder
-- The `sass` and `js` folders are compiled to the `wp-content/themes/posture_cool_things/dist` folder
-- The `sass` and `js` folders are compiled to the `wp-content/themes/posture_cool_things/dist` folder
-
-# WordPress Plugin Development
-
-- The plugins are located in the `wp-content/plugins` folder
-- The plugins are compiled to the `wp-content/plugins/dist` folder
-- The plugins are compiled to the `wp-content/plugins/dist` folder
-
-# WordPress Language Development
-
-- The languages are located in the `wp-content/languages` folder
-- The languages are compiled to the `wp-content/languages/dist` folder
-- The languages are compiled to the `wp-content/languages/dist` folder
-
-# WordPress Uploads
-
-- The uploads are located in the `wp-content/uploads` folder
-- The uploads are compiled to the `wp-content/uploads/dist` folder
-- The uploads are compiled to the `wp-content/uploads/dist` folder
-
-# WordPress Core Development
-
-- The core is located in the `wp-content/core` folder
-- The core is compiled to the `wp-content/core/dist` folder
-- The core is compiled to the `wp-content/core/dist` folder
-
-# WordPress Configuration
-
-- The configuration is located in the `wp-content/config` folder
-- The configuration is compiled to the `wp-content/config/dist` folder
-- The configuration is compiled to the `wp-content/config/dist` folder
-
-# WordPress Debugging
-
-- The debugging is located in the `wp-content/debug` folder
-- The debugging is compiled to the `wp-content/debug/dist` folder
-- The debugging is compiled to the `wp-content/debug/dist` folder
-
-# WordPress Development Tools
-
-- The development tools are located in the `wp-content/development-tools` folder
-- The development tools are compiled to the `wp-content/development-tools/dist` folder
-- The development tools are compiled to the `wp-content/development-tools/dist` folder
-
 # Cool Things WordPress Theme Development
 
 This project involves converting a Figma design into a fully functional WordPress theme for a technical assessment. The design features a modern, clean interface with mobile-responsive components and dynamic content sections.
-
-## Table of Contents
-
-1. **Project Setup**
-
-   - Development Environment Configuration
-   - Docker Configuration
-   - WordPress Installation
-   - Theme Structure Setup
-
-2. **Design Assets**
-
-   - Figma Design Analysis
-   - Asset Export Guidelines
-   - Color Palette & Typography
-   - Image Optimization Strategy
-
-3. **Theme Development**
-
-   - Header Component
-   - Hero Section ("WE HAE A SOLUTION...")
-   - Features Section ("WE'RE THE BEST AT THINGS")
-   - Call-to-Action Section ("THIS IS WHY THE THING MATTERS")
-   - News & Updates Carousel
-   - Footer Component
-
-4. **Core Functionality**
-
-   - WordPress Template Hierarchy
-   - Custom Post Types
-   - Advanced Custom Fields Setup
-   - Navigation Menus
-   - Dynamic Content Areas
-
-5. **Interactive Elements**
-
-   - News Carousel Implementation
-   - Button Animations
-   - Responsive Navigation
-   - Scroll Effects
-
-6. **Responsive Design**
-
-   - Mobile-First Approach
-   - Breakpoint Strategy
-   - Media Queries
-   - Image Scaling
-
-7. **Performance Optimization**
-
-   - Asset Loading
-   - Image Optimization
-   - Caching Strategy
-   - Code Minification
-
-8. **Testing & Quality Assurance**
-
-   - Cross-Browser Testing
-   - Mobile Device Testing
-   - Performance Testing
-   - WordPress Standards Compliance
-
-9. **Deployment**
-   - Production Environment Setup
-   - Launch Checklist
-   - Performance Monitoring
-   - Maintenance Plan
 
 ## Project Overview
 
@@ -338,8 +220,6 @@ This is a technical assessment project and is not open for contributions.
 - Possible scroll animations for sections
 - Card hover effects
 
-This analysis will help us structure our theme development and ensure we capture all necessary design elements. Would you like to focus on any particular aspect to begin the implementation?
-
 ### Asset Export Checklist
 
 1. **Logo & Branding**
@@ -381,8 +261,6 @@ This analysis will help us structure our theme development and ensure we capture
    - [ ] Tablet breakpoint specifications
    - [ ] Mobile breakpoint specifications
 
-docker compose exec wordpress wp plugin install figma-to-wp --activate
-
 ### Design Asset Inventory
 
 #### Critical Elements
@@ -415,35 +293,6 @@ docker compose exec wordpress wp plugin install figma-to-wp --activate
 - [ ] Button hover states
 - [ ] Card hover effects
 - [ ] Carousel interaction
-
-### Figma Asset Export Guide
-
-#### Media Types
-
-- [ ] Static Images (PNG/SVG)
-- [ ] Animated Elements (GIF/MP4)
-- [ ] Background Videos
-- [ ] Interactive States (hover/click)
-
-#### Export Methods
-
-1. **For Static Elements**:
-
-   - Right-click > Export
-   - Select appropriate format (SVG for vectors, PNG for images)
-   - Set scale (2x for retina if needed)
-
-2. **For Animated/Video Content**:
-
-   - Check Smart Animate layers
-   - Look for embedded videos/GIFs
-   - Export as MP4 if available
-   - Note any animation timings/transitions
-
-3. **For Interactive Elements**:
-   - Document all states (normal/hover/active)
-   - Export each state separately
-   - Note transition effects
 
 ### Figma Export Checklist (By Section)
 
@@ -525,14 +374,3 @@ Export Format Guide:
 - Last 2 versions of major browsers
 - IE 11 (basic support)
 - Mobile-first approach
-
-## Project Information
-
-- Version: 1.0.0
-- Author: Chad Buie
-- Description: Technical assessment project for Posture Interactive
-- License: ISC
-
----
-
-**Note:** This is a technical assessment project and is not open for public contributions.
