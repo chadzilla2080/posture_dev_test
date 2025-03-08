@@ -48,7 +48,6 @@ docker compose up -d
 docker compose watch
 
 # If you modify Docker files
-docker compose down -v
 docker compose up --build && docker compose watch
 ```
 
@@ -82,6 +81,13 @@ Run `docker compose exec wordpress npm run watch-sass` in another terminal to wa
 - The container will also watch for changes in the `wp-content/plugins` folder and will automatically sync them to the container.
 - The container will also watch for changes in the `wp-content/languages` folder and will automatically sync them to the container.
 - The container will also watch for changes in the `wp-content/uploads` folder and will automatically sync them to the container.
+
+# Important Docker Commands
+
+If for whatever reason you need to restore the database from a backup, you can use the following commands:
+
+- docker compose exec backup-service /scripts/restore.sh
+- docker compose exec backup-service /scripts/backup.sh
 
 # Cool Things WordPress Theme Development
 
@@ -374,3 +380,110 @@ Export Format Guide:
 - Last 2 versions of major browsers
 - IE 11 (basic support)
 - Mobile-first approach
+
+## Disaster Recovery
+
+### Backup Database
+
+```bash
+# Create a backup
+docker compose exec backup-service /scripts/backup.sh
+```
+
+### Restore Database
+
+```bash
+# Restore from latest backup
+docker compose exec backup-service /scripts/restore.sh
+```
+
+### Manual Recovery Steps (if no backup) - Macro Steps
+
+1. **WordPress Core Setup**
+
+   - Complete WordPress installation
+   - Set permalink structure (Settings > Permalinks)
+   - Create required pages (Home, Blog, etc.)
+   - Set static front page (Settings > Reading)
+
+2. **Theme Setup**
+
+   - Activate Cool Things theme
+   - Upload required media:
+     - Logo.svg
+     - Rectangle1.svg (hero)
+     - Man and phone 1.svg
+     - Woman on phone 1.svg
+
+3. **Navigation**
+
+   - Create Primary Menu
+   - Add menu items
+   - Assign to Primary Menu location
+
+4. **Content Recovery**
+
+   - Create essential pages
+   - Add sample blog posts
+   - Set featured images
+   - Configure ACF fields
+
+5. **Plugin Setup**
+   - Install/activate required plugins:
+     - Advanced Custom Fields
+     - Any other required plugins
+
+### Manual Recovery Steps - Micro Steps
+
+1. **Create Pages:**
+
+   - Home/Front Page
+   - Blog
+   - About
+   - Contact
+
+2. **WordPress Settings:**
+
+   - Settings > Reading
+   - Set "Your homepage displays" to "A static page"
+   - Set Homepage to "Home"
+   - Set Posts page to "Blog"
+
+3. **Theme Settings:**
+
+   - Activate the Cool Things theme
+   - Appearance > Customize
+   - Set up site identity (logo, title)
+
+4. **Create Menu:**
+
+   - Appearance > Menus
+   - Create "Primary Menu"
+   - Add pages to menu
+   - Set location to "Primary Menu"
+
+5. **Add Content:**
+   - Create sample blog posts
+   - Upload media files
+   - Set featured images
+
+### Preventive Measures
+
+1. **Regular Backups**
+
+   ```bash
+   # Scheduled via cron in docker-compose.override.yml
+   # Manual backup:
+   docker compose exec backup-service /scripts/backup.sh
+   ```
+
+2. **Version Control**
+
+   - Keep theme files in Git
+   - Export and commit ACF configurations
+   - Document custom post types and taxonomies
+
+3. **Documentation**
+   - Maintain list of required plugins
+   - Document custom field configurations
+   - Keep records of critical site settings

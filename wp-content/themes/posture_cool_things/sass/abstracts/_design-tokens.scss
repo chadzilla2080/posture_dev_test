@@ -34,3 +34,26 @@ $breakpoint-sm: 400px;
 $breakpoint-md: 500px;
 $breakpoint-lg: 600px;
 $breakpoint-xl: 700px;
+
+/**
+ * Global Design Tokens
+ * 
+ *
+ * These tokens are used throughout the theme to ensure consistency and
+ * maintainability. 
+ *
+ * Notes:
+ * 
+ * Since we have hover states and active states, this is the best way to enable 
+ * the colors to be manipulated by javascript at runtime.
+ *
+*/
+
+:root {
+  // Colors
+  --color-blue: #1696bb;
+  --color-blue-light: #1ba8d1; // Brighter version for hover
+  --color-white: #ffffff;
+  --color-orange: #ffb775;
+  --color-orange-light: #ffc693; // Hover state for orange
+}

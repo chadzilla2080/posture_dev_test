@@ -124,16 +124,12 @@ add_action(hook_name: 'after_setup_theme', callback: 'posture_cool_things_setup'
  * 
  */
 function posture_cool_things_scripts(): void {
-
-    // Simple version control
-    $version = defined('WP_DEBUG') && WP_DEBUG ? time() : _S_VERSION;
-
-    // Main stylesheet
+    // Enqueue main stylesheet
     wp_enqueue_style(
         'posture-cool-things-style',
         get_stylesheet_uri(),
-        [],
-        _S_VERSION
+        array(),
+        wp_get_theme()->get('Version')
     );
 
     // Remove unnecessary WordPress styles:: Dequeue any auto-injected styles

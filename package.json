@@ -7,6 +7,13 @@
     "sass": "^1.85.1"
   },
   "scripts": {
-    "watch-sass": "sass --watch wp-content/themes/posture_cool_things/sass/main.scss:wp-content/themes/posture_cool_things/style.css --style=compressed"
+    "watch-sass": "sass --watch wp-content/themes/posture_cool_things/sass/main.scss:wp-content/themes/posture_cool_things/style.css --style=compressed",
+    "sass:dev": "./build.sh",
+    "sass:build": "sass sass/main.scss:style.css.temp --no-source-map --style=compressed && cat style.css.header style.css.temp > style.css && rm style.css.temp",
+    "postcss": "postcss style.css --use autoprefixer cssnano --replace",
+    "predeploy": "mkdir -p dist/images",
+    "copy-assets": "cp -r assets/images/* dist/images/",
+    "build": "npm run predeploy && npm run sass:build && npm run postcss && npm run copy-assets",
+    "start": "npm run sass:dev"
   }
 }

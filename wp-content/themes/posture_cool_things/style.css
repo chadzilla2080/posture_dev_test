@@ -8,9 +8,31 @@ Version: 1.0.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: posture-cool-things
+Screenshot: screenshot.png
 */
 
-/* The compiled CSS from SASS will be appended below this header */ *,
+/* The compiled CSS from SASS will be appended below this header */ /**
+ * Global Design Tokens
+ * 
+ *
+ * These tokens are used throughout the theme to ensure consistency and
+ * maintainability. 
+ *
+ * Notes:
+ * 
+ * Since we have hover states and active states, this is the best way to enable 
+ * the colors to be manipulated by javascript at runtime.
+ *
+*/
+:root {
+  --color-blue: #1696bb;
+  --color-blue-light: #1ba8d1;
+  --color-white: #ffffff;
+  --color-orange: #ffb775;
+  --color-orange-light: #ffc693;
+}
+
+*,
 *::before,
 *::after {
   box-sizing: border-box;
@@ -484,30 +506,46 @@ a:hover {
   }
 }
 
+/* Button Component Styles */
 .button {
   display: inline-block;
-  padding: 1rem 2rem;
-  border: 2px solid transparent;
+  width: 239px;
+  height: 60px;
+  padding: 0.77rem 2rem;
+  border: 6px solid;
   font-weight: bold;
   text-decoration: none;
   text-transform: uppercase;
   transition: all 0.3s ease;
-  cursor: pointer;
+  text-align: center;
+  line-height: 1;
+  outline: 5px solid red !important;
 }
-.button--outline {
-  color: #ffffff;
-  border-color: #ffffff;
+.button--ghost {
+  color: var(--color-white);
+  border-color: var(--color-white);
+  background: transparent;
 }
-.button--outline:hover {
-  background-color: #ffffff;
-  color: #1696bb;
+.button--ghost:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+.button--ghost:active {
+  color: var(--color-blue);
+  background: var(--color-white);
 }
 .button--primary {
-  background-color: #ffb84d;
-  color: #ffffff;
+  color: var(--color-white);
+  border-color: var(--color-blue);
+  background: var(--color-blue);
 }
 .button--primary:hover {
-  background-color: rgb(255, 163.6573033708, 26);
+  background: var(--color-blue-light);
+  border-color: var(--color-blue-light);
+}
+.button--primary:active {
+  color: var(--color-blue);
+  background: var(--color-white);
+  border-color: var(--color-blue);
 }
 .button--text {
   color: #1696bb;

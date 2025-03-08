@@ -8,6 +8,7 @@ Version: 1.0.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: posture-cool-things
+Screenshot: screenshot.png
 */
 
 /* The compiled CSS from SASS will be appended below this header */ 

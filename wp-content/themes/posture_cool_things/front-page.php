@@ -29,7 +29,7 @@
             $button_text = get_field('hero_button_text');
             $button_url = get_field('hero_button_url');
             ?>
-            <a href="<?php echo esc_url($button_url ?: '#'); ?>" class="button button--outline">
+            <a href="<?php echo esc_url($button_url ?: '#'); ?>" class="button button--ghost">
                 <?php echo esc_html($button_text ?: 'PRODUCTS'); ?>
             </a>
         </div>
@@ -58,7 +58,7 @@
                 <div class="cta__text">
                     <h2>THIS IS WHY THE THING MATTERS</h2>
                     <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
-                    <a href="#" class="button button--outline">SERVICES</a>
+                    <a href="#" class="button button--ghost">SERVICES</a>
                 </div>
                 <div class="cta__illustration">
                     <img src="<?php echo get_theme_file_uri('assets/images/Woman on phone 1.svg'); ?>" alt="Woman with phone illustration">

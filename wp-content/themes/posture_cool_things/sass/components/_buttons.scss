@@ -1,32 +1,52 @@
 @use 'sass:color';
 @use '../abstracts' as *;
 
+/* Button Component Styles */
 .button {
   display: inline-block;
-  padding: 1rem 2rem;
-  border: 2px solid transparent;
+  width: 239px;
+  height: 60px;
+  padding: 0.77rem 2rem;
+  border: 6px solid;
   font-weight: bold;
   text-decoration: none;
   text-transform: uppercase;
   transition: all 0.3s ease;
-  cursor: pointer;
+  text-align: center;
+  line-height: 1;
+  outline: 5px solid red !important; // Temporary test style
 
-  &--outline {
-    color: $color-white;
-    border-color: $color-white;
+  // Ghost Button (Default/Static)
+  &--ghost {
+    color: var(--color-white);
+    border-color: var(--color-white);
+    background: transparent;
 
     &:hover {
-      background-color: $color-white;
-      color: $color-primary;
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    &:active {
+      color: var(--color-blue);
+      background: var(--color-white);
     }
   }
 
+  // Primary Button
   &--primary {
-    background-color: $color-accent;
-    color: $color-white;
+    color: var(--color-white);
+    border-color: var(--color-blue);
+    background: var(--color-blue);
 
     &:hover {
-      background-color: color.adjust($color-accent, $lightness: -10%);
+      background: var(--color-blue-light);
+      border-color: var(--color-blue-light);
+    }
+
+    &:active {
+      color: var(--color-blue);
+      background: var(--color-white);
+      border-color: var(--color-blue);
     }
   }
 

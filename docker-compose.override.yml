@@ -1,0 +1,17 @@
+services:
+  backup-service:
+    image: alpine
+    volumes:
+      - wp_data:/var/www/html
+      - ./wp-content/themes/posture_cool_things/scripts:/scripts
+      - ./wp-content/themes/posture_cool_things/backups:/backups
+    depends_on:
+      - wordpress
+    entrypoint: ['/bin/sh', '-c']
+    command:
+      - |
+        apk add --no-cache dcron wp-cli
+        echo "0 2 * * * /scripts/backup.sh >> /backups/backup.log 2>&1" > /var/spool/cron/crontabs/root
+        crond -f -d 8
+    environment:
+      - TZ=America/New_York
