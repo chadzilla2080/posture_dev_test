@@ -1,20 +1,32 @@
 #!/bin/bash
 
-# Copy the header first
-cp style.css.header style.css
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m' # No Color
 
-# Run sass in watch mode and pipe output to a temporary file
-sass sass/main.scss:style.css.temp --watch --source-map &
-SASS_PID=$!
+# Error handling
+set -e
 
-# Watch for changes to the temporary file and update style.css
-while true; do
-    if [ -f style.css.temp ]; then
-        cat style.css.header style.css.temp > style.css
-    fi
-    sleep 1
-done &
-WATCH_PID=$!
+echo "Starting SASS compilation..."
 
-# Wait for either process to exit
-wait $SASS_PID $WATCH_PID 
+# Development mode with source maps
+if [ "$1" = "dev" ]; then
+    sass --style=expanded --source-map \
+        sass/main.scss:style.css \
+        --watch
+
+# Production mode with minification
+else
+    echo "Building for production..."
+    sass --style=compressed \
+        sass/main.scss:style.css
+
+    echo -e "${GREEN}Build completed successfully!${NC}"
+fi
+
+# Error handling
+if [ $? -ne 0 ]; then
+    echo -e "${RED}Build failed!${NC}"
+    exit 1
+fi 

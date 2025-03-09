@@ -1,17 +1,10 @@
-/*
-Theme Name: Posture Cool Things
-Theme URI: https://posture.is
-Author: Chad Buie
-Author URI: https://posture.is
-Description: Dev test theme for Posture Interactive
-Version: 1.0.0
-License: GNU General Public License v2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: posture-cool-things
-Screenshot: screenshot.png
-*/
-
-/* The compiled CSS from SASS will be appended below this header */ /**
+/**
+ * Design Tokens
+ * 
+ * Global design tokens for maintaining consistent styling across the theme.
+ * Includes colors, typography, spacing, and other global variables.
+ */
+/**
  * Global Design Tokens
  * 
  *
@@ -32,6 +25,17 @@ Screenshot: screenshot.png
   --color-orange-light: #ffc693;
 }
 
+/**
+ * Mixins
+ * 
+ * Reusable style patterns and responsive breakpoints
+ */
+/*
+    Usage:
+    @include respond-to('tablet') {
+        // styles here
+    }
+*/
 *,
 *::before,
 *::after {
@@ -233,7 +237,7 @@ a:hover {
 .grid--2col {
   grid-template-columns: 1fr;
 }
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .grid--2col {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -241,7 +245,7 @@ a:hover {
 .grid--3col {
   grid-template-columns: 1fr;
 }
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .grid--3col {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -253,12 +257,12 @@ a:hover {
   margin: 0 auto;
   padding: 0 24px;
 }
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .container {
     padding: 0 48px;
   }
 }
-@media (min-width: 768px) {
+@media (min-width: 320px) {
   .container {
     padding: 0 24px;
   }
@@ -269,18 +273,18 @@ a:hover {
   width: 100%;
   padding: 0;
 }
-@media (min-width: 1440px) {
+@media (min-width: 1024px) {
   .hero .container {
     padding: 0 24px;
   }
 }
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .hero .container {
     padding: 0 24px;
     max-width: 100%;
   }
 }
-@media (min-width: 768px) {
+@media (min-width: 320px) {
   .hero .container {
     padding: 0 12px;
   }
@@ -290,13 +294,13 @@ a:hover {
   max-width: 1800px;
   margin: 0 auto;
 }
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .hero h1 {
     max-width: 100%;
     font-size: 5rem;
   }
 }
-@media (min-width: 768px) {
+@media (min-width: 320px) {
   .hero h1 {
     font-size: 3rem;
     padding: 0 12px;
@@ -324,7 +328,7 @@ a:hover {
   margin: 0 auto;
   padding: 0 24px;
 }
-@media (min-width: 768px) {
+@media (min-width: 320px) {
   .site-header .container {
     flex-direction: column;
     gap: 24px;
@@ -344,7 +348,7 @@ a:hover {
 .site-header .logo img:hover {
   transform: translateY(-2px);
 }
-@media (min-width: 768px) {
+@media (min-width: 320px) {
   .site-header .logo img {
     height: 32px;
     width: auto;
@@ -353,7 +357,7 @@ a:hover {
 .site-header .main-navigation {
   margin-left: auto;
 }
-@media (min-width: 768px) {
+@media (min-width: 320px) {
   .site-header .main-navigation {
     width: 100%;
     background: rgba(22, 150, 187, 0.95);
@@ -380,7 +384,7 @@ a:hover {
   margin: 0;
   padding: 0;
 }
-@media (min-width: 768px) {
+@media (min-width: 320px) {
   .site-header .main-navigation ul {
     flex-direction: column;
     align-items: center;
@@ -422,7 +426,7 @@ a:hover {
   padding: 0;
   cursor: pointer;
 }
-@media (min-width: 768px) {
+@media (min-width: 320px) {
   .site-header .menu-toggle {
     display: block;
     position: absolute;
@@ -622,6 +626,11 @@ a:hover {
   width: 100vw;
   overflow: hidden;
 }
+@media (max-width: 768px) {
+  .hero {
+    min-height: 650px;
+  }
+}
 .hero__background {
   position: absolute;
   top: 0;
@@ -660,6 +669,12 @@ a:hover {
   padding-left: 0;
   padding-right: 0;
 }
+@media (max-width: 768px) {
+  .hero__content {
+    min-height: 500px;
+    padding-top: 100px;
+  }
+}
 .hero__content h1 {
   font-size: 1.8rem;
   letter-spacing: 0.02em;
@@ -674,6 +689,11 @@ a:hover {
   white-space: normal;
   white-space-collapse: collapse;
   text-wrap-mode: wrap;
+}
+@media (max-width: 768px) {
+  .hero__content h1 {
+    margin-top: 100px;
+  }
 }
 @media (min-width: 400px) {
   .hero__content h1 {
@@ -699,13 +719,13 @@ a:hover {
     padding: 0 24px;
   }
 }
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .hero__content h1 {
     font-size: 3.8rem;
     margin-top: 150px;
   }
 }
-@media (min-width: 1440px) {
+@media (min-width: 1024px) {
   .hero__content h1 {
     font-size: 5.5rem;
     margin-top: 150px;
@@ -770,6 +790,8 @@ a:hover {
   .features__illustration {
     order: -1;
     width: 100%;
+    margin-top: 40px !important;
+    margin-bottom: -49px !important;
     max-width: 350px;
     height: auto;
     aspect-ratio: 350/313;
@@ -829,18 +851,21 @@ a:hover {
   .features__text h2 {
     font-size: 2rem;
     margin-bottom: 20px;
+    text-align: center;
   }
 }
 @media (max-width: 500px) {
   .features__text h2 {
-    font-size: 1.8rem;
+    font-size: 1.1rem;
     margin-bottom: 18px;
+    text-align: center;
   }
 }
 @media (max-width: 300px) {
   .features__text h2 {
-    font-size: 1.6rem;
+    font-size: 1.1rem;
     margin-bottom: 16px;
+    text-align: center;
   }
 }
 .features__text p {
@@ -974,31 +999,41 @@ a:hover {
   .cta__illustration {
     position: relative;
     right: auto;
-    top: auto;
     width: 100%;
     max-width: 400px;
     height: auto;
-    margin: 0 auto 30px;
+    margin: 0 auto 0;
+    z-index: 2;
+    top: -61px;
+    margin-bottom: -51px;
   }
 }
 @media (max-width: 600px) {
   .cta__illustration {
     max-width: 350px;
+    top: -61px;
+    margin-bottom: -51px;
   }
 }
 @media (max-width: 500px) {
   .cta__illustration {
     max-width: 300px;
+    top: -61px;
+    margin-bottom: -51px;
   }
 }
 @media (max-width: 400px) {
   .cta__illustration {
     max-width: 250px;
+    top: -61px;
+    margin-bottom: -51px;
   }
 }
 @media (max-width: 300px) {
   .cta__illustration {
     max-width: 200px;
+    top: -61px;
+    margin-bottom: -51px;
   }
 }
 @media (max-width: 1200px) {
@@ -1028,7 +1063,8 @@ a:hover {
     max-width: 400px;
     height: auto;
     right: 0;
-    top: 0;
+    top: -56px;
+    margin-bottom: -68px !important;
     margin: 0 auto;
   }
 }
@@ -1914,4 +1950,4 @@ a:hover {
   background: rgba(45, 48, 71, 0.5);
 }
 
-/*# sourceMappingURL=style.css.temp.map */
+/*# sourceMappingURL=style.css.map */

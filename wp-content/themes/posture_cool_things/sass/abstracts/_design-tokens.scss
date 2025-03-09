@@ -1,5 +1,12 @@
 @use 'sass:color';
 
+/**
+ * Design Tokens
+ * 
+ * Global design tokens for maintaining consistent styling across the theme.
+ * Includes colors, typography, spacing, and other global variables.
+ */
+
 // Colors
 $color-primary: #1696bb; // Blue background
 $color-white: #ffffff; // Text and cards
