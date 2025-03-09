@@ -139,9 +139,9 @@ The container will automatically watch and sync changes in:
 - `wp-content/languages/`
 - `wp-content/uploads/`
 
-## Production Setup
+## Production Docker Setup
 
-### Initial Server Setup
+### Initial Docker Installation
 
 ```bash
 # Install Docker
@@ -151,6 +151,18 @@ sh get-docker.sh
 # Install Docker Compose
 sudo curl -L "https://github.com/docker/compose/releases/download/v2.23.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
+```
+
+### Project Structure
+
+```
+.
+├── docker-compose.prod.yml  # Production Docker Compose configuration
+├── Dockerfile.prod         # Production Dockerfile
+├── nginx.conf             # Nginx reverse proxy configuration
+├── deploy.sh             # Deployment script
+├── .env                  # Environment variables (do not commit)
+└── wp-content/          # WordPress theme and plugins
 ```
 
 ### SSL Configuration
@@ -163,13 +175,13 @@ sudo apt-get install certbot
 # Generate certificate
 sudo certbot certonly --standalone -d your-domain.com
 
-# Copy certificates
+# Setup SSL directory and copy certificates
 mkdir -p ssl
 sudo cp /etc/letsencrypt/live/your-domain.com/fullchain.pem ssl/
 sudo cp /etc/letsencrypt/live/your-domain.com/privkey.pem ssl/
 ```
 
-### Environment Configuration
+### Environment Setup
 
 ```env
 DB_NAME=your_database_name
@@ -179,41 +191,47 @@ DB_ROOT_PASSWORD=your_secure_root_password
 WP_TABLE_PREFIX=wp_
 ```
 
-### Deployment
+### Theme Deployment
 
 ```bash
-# Clone theme
+# Clone theme repository
 git clone https://github.com/your-repo/your-wordpress-theme.git
 cd your-wordpress-theme
 
-# Make deploy script executable
+# Make deploy script executable and run
 chmod +x deploy.sh
-
-# Deploy
 ./deploy.sh
 ```
 
-### Maintenance Commands
+### SSL Auto-renewal Setup
 
 ```bash
-# View logs
-docker-compose -f docker-compose.prod.yml logs        # All containers
+# Test SSL renewal
+sudo certbot renew --dry-run
+
+# Setup automatic renewal (runs at midnight on the 1st of each month)
+sudo crontab -e
+0 0 1 * * certbot renew
+```
+
+### Container Management
+
+```bash
+# View container logs
+docker-compose -f docker-compose.prod.yml logs          # All containers
 docker-compose -f docker-compose.prod.yml logs wordpress  # Specific container
 
-# Check status
+# Check container status
 docker-compose -f docker-compose.prod.yml ps
 
 # View recent logs
 docker-compose -f docker-compose.prod.yml logs --tail=100
 
-# Restart service
+# Restart services
 docker-compose -f docker-compose.prod.yml restart wordpress
-
-# Set permissions
-sudo chown -R www-data:www-data wp-content
 ```
 
-### Security Setup
+### Security Configuration
 
 ```bash
 # Configure firewall
@@ -221,7 +239,12 @@ sudo ufw allow 80
 sudo ufw allow 443
 sudo ufw allow 22
 sudo ufw enable
+
+# Set proper file permissions
+sudo chown -R www-data:www-data wp-content
 ```
+
+This README provides a comprehensive guide for deploying and maintaining your WordPress application in production. Each section includes the necessary commands and configurations for a complete setup.
 
 # Cool Things WordPress Theme Development
 
@@ -257,107 +280,7 @@ This WordPress theme is being developed as part of a technical assessment. The p
 - JavaScript/jQuery
 - ACF (Advanced Custom Fields)
 
-# Production Docker Setup
-
-Install Docker
-curl -fsSL https://get.docker.com -o get-docker.sh
-sh get-docker.sh
-Install Docker Compose
-sudo curl -L "https://github.com/docker/compose/releases/download/v2.23.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
-
-.
-├── docker-compose.prod.yml # Production Docker Compose configuration
-├── Dockerfile.prod # Production Dockerfile
-├── nginx.conf # Nginx reverse proxy configuration
-├── deploy.sh # Deployment script
-├── .env # Environment variables (do not commit)
-└── wp-content/ # WordPress theme and plugins
-:
-
-bash
-sudo apt-get update
-sudo apt-get install certbot
-:
-bash
-sudo certbot certonly --standalone -d your-domain.com
-:
-bash
-mkdir -p ssl
-sudo cp /etc/letsencrypt/live/your-domain.com/fullchain.pem ssl/
-sudo cp /etc/letsencrypt/live/your-domain.com/privkey.pem ssl/
-:
-env
-DB*NAME=your_database_name
-DB_USER=your_database_user
-DB_PASSWORD=your_secure_password
-DB_ROOT_PASSWORD=your_secure_root_password
-WP_TABLE_PREFIX=wp*
-:
-bash
-git clone https://github.com/your-repo/your-wordpress-theme.git
-cd your-wordpress-theme
-:
-nginx
-server_name your-domain.com;
-:
-bash
-chmod +x deploy.sh
-:
-bash
-./deploy.sh
-:
-dockerfile
-FROM wordpress:latest
-:
-bash
-./deploy.sh
-:
-bash
-sudo certbot renew --dry-run
-:
-bash
-sudo crontab -e
-0 0 1 certbot renew
-:
-bash
-All containers
-docker-compose -f docker-compose.prod.yml logs
-Specific container
-docker-compose -f docker-compose.prod.yml logs wordpress
-:
-bash
-sudo ufw allow 80
-sudo ufw allow 443
-sudo ufw allow 22
-sudo ufw enable
-:
-bash
-Set proper ownership
-sudo chown -R www-data:www-data wp-content
-bash
-Check container status
-docker-compose -f docker-compose.prod.yml ps
-Check container logs
-docker-compose -f docker-compose.prod.yml logs --tail=100
-Restart specific service
-docker-compose -f docker-compose.prod.yml restart wordpress
-]
-This README provides a comprehensive guide for deploying and maintaining your WordPress application in production. Would you like me to expand on any particular section or add additional information?
-
-## Getting Started
-
-[Development setup instructions will be added here]
-
-## Contributing
-
-This is a technical assessment project and is not open for contributions.
-
-## License
-
-[License information will be added here]
-
-## Design Analysis
+# Design Analysis
 
 ### Color Palette
 
