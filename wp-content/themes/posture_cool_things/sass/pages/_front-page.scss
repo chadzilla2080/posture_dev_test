@@ -2,6 +2,71 @@
 @use 'sass:math';
 @use '../abstracts' as *;
 
+/**
+ * Front Page Responsive Elements
+ * 
+ * Hero Section:
+ *
+ * Description:
+ *   - These adjustments are made to the hero section to ensure it is responsive and displays correctly on all devices.
+ *   - Desktop the hero image is taller
+ *   - Mobile the hero image is shorter
+ *   - 
+ *
+ * - .hero: min-height adjusts from 782px to 650px on mobile (line 15)
+ *   - Desktop: min-height: 782px (line 15)
+ *   - Mobile: min-height: 650px (line 17)
+ *
+ * - .hero__content h1: 
+ *   - Desktop: 4.5rem
+ *   - Tablet: 3.8rem
+ *   - Mobile: scales from 1.8rem to 2.5rem (lines 65-95)
+ *   - Mobile margin-top: 100px (line 70)
+ * 
+ * Features Section:
+ *
+ * Description:
+ *   - These adjustments are crucial to tweak and test to ensure the items are displayed correctly on all devices.
+ *
+ * - .features__content: 
+ *   - Desktop: flex-row with gap 120px
+ *   - Mobile: flex-column with centered items (lines 150-165)
+ *
+ * - .features__illustration:
+ *   - Desktop: positioned with margin-top: 40px, right: -30px
+ *   - Mobile: centered with max-width scaling from 350px to 200px (lines 180-210)
+ *
+ * - .features__text:
+ *   - Desktop: left-aligned, max-width: 480px
+ *   - Mobile: centered text, full width (lines 220-240)
+ * 
+ * CTA Section:
+ *
+ * Description:
+ *   - These section is trickey because on mobile the image is positioned over the content.
+ *   - The image is positioned absolutely and the content is positioned relatively.
+ *
+ * - .cta__content:
+ *   - Desktop: flex-row with gap 120px
+ *   - Mobile: column-reverse layout (lines 300-320)
+ *
+ * - .cta__illustration:
+ *   - Desktop: absolute positioning with overlapping effect
+ *   - Mobile: relative positioning with -61px top offset (lines 350-380)
+ *
+ * - .cta__text:
+ *   - Desktop: left-aligned with max-width
+ *   - Mobile: centered with full width (lines 400-420)
+ * 
+ *
+ * Button Responsive Behavior:
+ *
+ * - Desktop: inline-block with fixed width
+ * - Mobile: centered block elements (lines 450-470)
+ *
+ *
+ */
+
 .site-main {
   width: 100%;
   overflow-x: hidden;
@@ -80,7 +145,7 @@
       text-wrap-mode: wrap;
 
       @media (max-width: $breakpoint-mobile) {
-        margin-top: 100px; // Position closer to header on mobile
+        margin-top: 100px;
       }
 
       // 400-499px
@@ -115,12 +180,12 @@
 
       // Your original desktop styles
       @include respond-to('desktop') {
-        font-size: 5.5rem;
+        font-size: 4.5rem;
         margin-top: 150px;
       }
 
       @include respond-to('wide') {
-        font-size: 6.5rem;
+        font-size: 4.5rem;
         margin-top: 150px;
       }
     }
@@ -177,6 +242,10 @@
     flex-shrink: 0;
     width: 350px;
     height: 313px;
+    margin-top: 40px;
+    margin-right: -20px;
+    position: relative;
+    right: -30px;
 
     @media (max-width: 900px) {
       order: -1;
@@ -186,6 +255,7 @@
       max-width: 350px;
       height: auto;
       aspect-ratio: 350/313;
+      right: auto;
     }
 
     @media (max-width: 800px) {
@@ -226,7 +296,7 @@
 
     h2 {
       color: $color-primary;
-      font-size: 2.5rem;
+      font-size: 2rem;
       margin-bottom: 24px;
 
       @media (max-width: 800px) {
