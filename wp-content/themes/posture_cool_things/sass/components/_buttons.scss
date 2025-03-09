@@ -6,7 +6,7 @@
   display: inline-block;
   width: 239px;
   height: 60px;
-  padding: 0.77rem 2rem;
+  padding: 1.1rem 2rem;
   border: 6px solid;
   font-weight: bold;
   text-decoration: none;
@@ -14,7 +14,7 @@
   transition: all 0.3s ease;
   text-align: center;
   line-height: 1;
-  outline: 5px solid red !important; // Temporary test style
+  // outline: 5px solid red !important; // Temporary test style
 
   // Ghost Button (Default/Static)
   &--ghost {
@@ -23,7 +23,8 @@
     background: transparent;
 
     &:hover {
-      background: rgba(255, 255, 255, 0.2);
+      background: rgb(49, 198, 244); // #47d4fd converted to RGBA
+      color: var(--color-white);
     }
 
     &:active {
@@ -47,6 +48,25 @@
       color: var(--color-blue);
       background: var(--color-white);
       border-color: var(--color-blue);
+    }
+  }
+
+  // Services Button
+  &--services {
+    color: var(--color-white);
+    border-color: #fdbb61;
+    background: #fdbb61;
+
+    &:hover {
+      background: #fec77d;
+      border-color: #fdbb61;
+      color: var(--color-white);
+    }
+
+    &:active {
+      color: #fdbb61;
+      background: var(--color-white);
+      border-color: #fdbb61;
     }
   }
 

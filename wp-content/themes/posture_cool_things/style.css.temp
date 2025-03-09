@@ -498,7 +498,7 @@ a:hover {
   display: inline-block;
   width: 239px;
   height: 60px;
-  padding: 0.77rem 2rem;
+  padding: 1.1rem 2rem;
   border: 6px solid;
   font-weight: bold;
   text-decoration: none;
@@ -506,7 +506,6 @@ a:hover {
   transition: all 0.3s ease;
   text-align: center;
   line-height: 1;
-  outline: 5px solid red !important;
 }
 .button--ghost {
   color: var(--color-white);
@@ -514,7 +513,8 @@ a:hover {
   background: transparent;
 }
 .button--ghost:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgb(49, 198, 244);
+  color: var(--color-white);
 }
 .button--ghost:active {
   color: var(--color-blue);
@@ -533,6 +533,21 @@ a:hover {
   color: var(--color-blue);
   background: var(--color-white);
   border-color: var(--color-blue);
+}
+.button--services {
+  color: var(--color-white);
+  border-color: #fdbb61;
+  background: #fdbb61;
+}
+.button--services:hover {
+  background: #fec77d;
+  border-color: #fdbb61;
+  color: var(--color-white);
+}
+.button--services:active {
+  color: #fdbb61;
+  background: var(--color-white);
+  border-color: #fdbb61;
 }
 .button--text {
   color: #1696bb;
