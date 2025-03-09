@@ -2,6 +2,37 @@
 
 A modern, responsive WordPress theme built with SASS and Docker. Features a dynamic front page with hero section, features showcase, CTA sections, and a news feed.
 
+## Table of Contents
+
+| Section & Subsections  | Description                       | Location                                                      | Line |
+| ---------------------- | --------------------------------- | ------------------------------------------------------------- | ---- |
+| **Theme Structure**    | Directory layout and organization | [Theme Structure](#theme-structure)                           | ~35  |
+| └─ Directory Tree      | Detailed file structure           | [Directory Tree](#theme-structure)                            | ~37  |
+| **Development Setup**  | Setup and installation            | [Development Setup](#development-setup)                       | ~54  |
+| └─ Prerequisites       | Required software and tools       | [Prerequisites](#prerequisites)                               | ~56  |
+| └─ Installation        | Step-by-step setup guide          | [Installation](#installation)                                 | ~62  |
+| **Docker Development** | Local development environment     | [Docker Development](#docker-development)                     | ~81  |
+| └─ Container Commands  | Basic docker commands             | [Container Commands](#docker-setup-container-commands)        | ~83  |
+| └─ Development Mode    | Working with docker watchers      | [Development Mode](#docker-compose-development-mode)          | ~91  |
+| **Docker Production**  | Production environment setup      | [Production Docker Setup](#production-docker-setup)           | ~240 |
+| └─ Installation Steps  | Server setup process              | [Production Installation](#production-installation)           | ~244 |
+| └─ SSL Configuration   | Setting up HTTPS                  | [SSL Setup](#ssl-configuration)                               | ~260 |
+| └─ Monitoring          | Logs and container status         | [Monitoring](#monitoring)                                     | ~280 |
+| **Theme Development**  | Theme implementation details      | [Theme Development](#cool-things-wordpress-theme-development) | ~110 |
+| └─ Project Overview    | Goals and requirements            | [Project Overview](#project-overview)                         | ~114 |
+| └─ Key Features        | Core functionality                | [Key Features](#key-features)                                 | ~124 |
+| └─ Development Stack   | Technologies used                 | [Development Stack](#development-stack)                       | ~134 |
+| **Design System**      | Visual design specifications      | [Design Analysis](#design-analysis)                           | ~315 |
+| └─ Color Palette       | Brand colors                      | [Color Palette](#color-palette)                               | ~319 |
+| └─ Typography          | Fonts and text styles             | [Typography](#typography)                                     | ~326 |
+| └─ Layout Components   | UI component specs                | [Layout Components](#layout-components)                       | ~336 |
+| **Asset Management**   | Required files and resources      | [Required Assets](#required-assets-for-export)                | ~380 |
+| └─ Critical Elements   | Essential design assets           | [Critical Elements](#critical-elements)                       | ~382 |
+| └─ Export Checklist    | Asset export guide                | [Export Checklist](#figma-export-checklist-by-section)        | ~400 |
+| **Disaster Recovery**  | Backup and restore                | [Disaster Recovery](#disaster-recovery)                       | ~420 |
+| └─ Backup Procedures   | Database backup steps             | [Backup Database](#backup-database)                           | ~422 |
+| └─ Recovery Steps      | Manual recovery guide             | [Manual Recovery](#manual-recovery-steps-macro-steps)         | ~430 |
+
 ## Theme Structure
 
 ```
@@ -22,7 +53,7 @@ posture_cool_things/
 └── style.css       # Theme information
 ```
 
-## Project Setup
+## Development Setup
 
 ### Prerequisites
 
@@ -34,22 +65,21 @@ posture_cool_things/
 
 1. Clone the repository:
 
-```bash
 git clone [repository-url]
-```
 
-2. Start Docker environment:
+2. Start Docker Dev Environment:
 
-```bash
 # Initial setup
+
 docker compose up -d
 
 # Watch for changes
+
 docker compose watch
 
 # If you modify Docker files
+
 docker compose up --build && docker compose watch
-```
 
 # Docker Setup, Container Commands
 
@@ -60,9 +90,6 @@ docker compose up --build && docker compose watch
 5. Run `docker compose exec wordpress wp --info` to get information about the WordPress installation
 6. Run `docker compose exec wordpress wp --version` to get the WordPress version
 7. Run `docker compose exec wordpress wp --help` to get help about the WordPress CLI
-8. Run `docker compose exec wordpress wp --info` to get information about the WordPress installation
-9. Run `docker compose exec wordpress wp --version` to get the WordPress version
-10. Run `docker compose exec wordpress wp --help` to get help about the WordPress CLI
 
 # Docker Compose Development Mode
 
@@ -122,6 +149,92 @@ This WordPress theme is being developed as part of a technical assessment. The p
 - SASS/SCSS
 - JavaScript/jQuery
 - ACF (Advanced Custom Fields)
+
+# Production Docker Setup
+
+Install Docker
+curl -fsSL https://get.docker.com -o get-docker.sh
+sh get-docker.sh
+Install Docker Compose
+sudo curl -L "https://github.com/docker/compose/releases/download/v2.23.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+.
+├── docker-compose.prod.yml # Production Docker Compose configuration
+├── Dockerfile.prod # Production Dockerfile
+├── nginx.conf # Nginx reverse proxy configuration
+├── deploy.sh # Deployment script
+├── .env # Environment variables (do not commit)
+└── wp-content/ # WordPress theme and plugins
+:
+bash
+sudo apt-get update
+sudo apt-get install certbot
+:
+bash
+sudo certbot certonly --standalone -d your-domain.com
+:
+bash
+mkdir -p ssl
+sudo cp /etc/letsencrypt/live/your-domain.com/fullchain.pem ssl/
+sudo cp /etc/letsencrypt/live/your-domain.com/privkey.pem ssl/
+:
+env
+DB*NAME=your_database_name
+DB_USER=your_database_user
+DB_PASSWORD=your_secure_password
+DB_ROOT_PASSWORD=your_secure_root_password
+WP_TABLE_PREFIX=wp*
+:
+bash
+git clone https://github.com/your-repo/your-wordpress-theme.git
+cd your-wordpress-theme
+:
+nginx
+server_name your-domain.com;
+:
+bash
+chmod +x deploy.sh
+:
+bash
+./deploy.sh
+:
+dockerfile
+FROM wordpress:latest
+:
+bash
+./deploy.sh
+:
+bash
+sudo certbot renew --dry-run
+:
+bash
+sudo crontab -e
+0 0 1 certbot renew
+:
+bash
+All containers
+docker-compose -f docker-compose.prod.yml logs
+Specific container
+docker-compose -f docker-compose.prod.yml logs wordpress
+:
+bash
+sudo ufw allow 80
+sudo ufw allow 443
+sudo ufw allow 22
+sudo ufw enable
+:
+bash
+Set proper ownership
+sudo chown -R www-data:www-data wp-content
+bash
+Check container status
+docker-compose -f docker-compose.prod.yml ps
+Check container logs
+docker-compose -f docker-compose.prod.yml logs --tail=100
+Restart specific service
+docker-compose -f docker-compose.prod.yml restart wordpress
+]
+This README provides a comprehensive guide for deploying and maintaining your WordPress application in production. Would you like me to expand on any particular section or add additional information?
 
 ## Getting Started
 

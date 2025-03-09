@@ -1,0 +1,23 @@
+FROM wordpress:latest
+
+# Install Node.js for build process only
+RUN apt-get update && apt-get install -y curl gnupg \
+    && curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
+    && apt-get install -y nodejs
+
+WORKDIR /var/www/html
+
+# Copy theme files and build assets
+COPY wp-content/themes/posture_cool_things /var/www/html/wp-content/themes/posture_cool_things
+WORKDIR /var/www/html/wp-content/themes/posture_cool_things
+
+# Install dependencies and build
+RUN npm install \
+    && npm run build \
+    && npm prune --production \
+    && apt-get remove -y nodejs \
+    && apt-get autoremove -y \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /var/www/html 
