@@ -29,7 +29,7 @@
     <?php 
     // Featured Posts Section
     if (function_exists('get_field') && get_field('show_featured_posts')): 
-        $post_count = absint(get_field('featured_posts_count')) ?: 3;
+        $post_count = absint(get_field('number_of_featured_posts')) ?: 3;
         $featured_posts = get_posts(array(
             'numberposts' => $post_count,
             'post_type' => 'post',

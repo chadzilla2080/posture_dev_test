@@ -317,6 +317,11 @@
     align-items: flex-start;
     gap: 120px;
     position: relative;
+
+    @media (max-width: $breakpoint-mobile) {
+      flex-direction: column-reverse;
+      align-items: center;
+    }
   }
 
   &__text {
@@ -344,12 +349,12 @@
   }
 
   &__illustration {
-    flex-shrink: 0;
-    width: 584px;
-    height: 618px;
     position: absolute;
     right: -40px;
     top: -140px;
+    flex-shrink: 0;
+    width: 584px;
+    height: 618px;
     z-index: 2;
     margin-left: 60px;
 
@@ -358,9 +363,34 @@
       height: 100%;
       object-fit: contain;
     }
+
+    @media (max-width: $breakpoint-mobile) {
+      position: relative;
+      right: auto;
+      top: auto;
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      margin: 0 auto 30px;
+    }
+
+    @media (max-width: $breakpoint-lg) {
+      max-width: 350px;
+    }
+
+    @media (max-width: $breakpoint-md) {
+      max-width: 300px;
+    }
+
+    @media (max-width: $breakpoint-sm) {
+      max-width: 250px;
+    }
+
+    @media (max-width: $breakpoint-xs) {
+      max-width: 200px;
+    }
   }
 
-  // Update responsive styles to maintain proportional offsets
   @media (max-width: 1200px) {
     &__illustration {
       width: 500px;
@@ -375,7 +405,7 @@
     margin-top: 40px;
 
     &__content {
-      flex-direction: column;
+      flex-direction: column-reverse;
       gap: 30px;
     }
 
