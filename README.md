@@ -4,34 +4,38 @@ A modern, responsive WordPress theme built with SASS and Docker. Features a dyna
 
 ## Table of Contents
 
-| Section & Subsections  | Description                       | Location                                                      | Line |
-| ---------------------- | --------------------------------- | ------------------------------------------------------------- | ---- |
-| **Theme Structure**    | Directory layout and organization | [Theme Structure](#theme-structure)                           | ~35  |
-| └─ Directory Tree      | Detailed file structure           | [Directory Tree](#theme-structure)                            | ~37  |
-| **Development Setup**  | Setup and installation            | [Development Setup](#development-setup)                       | ~54  |
-| └─ Prerequisites       | Required software and tools       | [Prerequisites](#prerequisites)                               | ~56  |
-| └─ Installation        | Step-by-step setup guide          | [Installation](#installation)                                 | ~62  |
-| **Docker Development** | Local development environment     | [Docker Development](#docker-development)                     | ~81  |
-| └─ Container Commands  | Basic docker commands             | [Container Commands](#docker-setup-container-commands)        | ~83  |
-| └─ Development Mode    | Working with docker watchers      | [Development Mode](#docker-compose-development-mode)          | ~91  |
-| **Docker Production**  | Production environment setup      | [Production Docker Setup](#production-docker-setup)           | ~240 |
-| └─ Installation Steps  | Server setup process              | [Production Installation](#production-installation)           | ~244 |
-| └─ SSL Configuration   | Setting up HTTPS                  | [SSL Setup](#ssl-configuration)                               | ~260 |
-| └─ Monitoring          | Logs and container status         | [Monitoring](#monitoring)                                     | ~280 |
-| **Theme Development**  | Theme implementation details      | [Theme Development](#cool-things-wordpress-theme-development) | ~110 |
-| └─ Project Overview    | Goals and requirements            | [Project Overview](#project-overview)                         | ~114 |
-| └─ Key Features        | Core functionality                | [Key Features](#key-features)                                 | ~124 |
-| └─ Development Stack   | Technologies used                 | [Development Stack](#development-stack)                       | ~134 |
-| **Design System**      | Visual design specifications      | [Design Analysis](#design-analysis)                           | ~315 |
-| └─ Color Palette       | Brand colors                      | [Color Palette](#color-palette)                               | ~319 |
-| └─ Typography          | Fonts and text styles             | [Typography](#typography)                                     | ~326 |
-| └─ Layout Components   | UI component specs                | [Layout Components](#layout-components)                       | ~336 |
-| **Asset Management**   | Required files and resources      | [Required Assets](#required-assets-for-export)                | ~380 |
-| └─ Critical Elements   | Essential design assets           | [Critical Elements](#critical-elements)                       | ~382 |
-| └─ Export Checklist    | Asset export guide                | [Export Checklist](#figma-export-checklist-by-section)        | ~400 |
-| **Disaster Recovery**  | Backup and restore                | [Disaster Recovery](#disaster-recovery)                       | ~420 |
-| └─ Backup Procedures   | Database backup steps             | [Backup Database](#backup-database)                           | ~422 |
-| └─ Recovery Steps      | Manual recovery guide             | [Manual Recovery](#manual-recovery-steps-macro-steps)         | ~430 |
+| Section & Subsections   | Description                       | Location                                                      | Line |
+| ----------------------- | --------------------------------- | ------------------------------------------------------------- | ---- |
+| **Theme Structure**     | Directory layout and organization | [Theme Structure](#theme-structure)                           | ~35  |
+| └─ Directory Tree       | Detailed file structure           | [Directory Tree](#theme-structure)                            | ~37  |
+| **Development Setup**   | Setup and installation            | [Development Setup](#development-setup)                       | ~54  |
+| └─ Prerequisites        | Required software and tools       | [Prerequisites](#prerequisites)                               | ~56  |
+| └─ Installation         | Step-by-step setup guide          | [Installation](#installation)                                 | ~62  |
+| **Docker Development**  | Local development environment     | [Docker Development](#docker-development)                     | ~81  |
+| └─ Container Commands   | Basic docker commands             | [Container Commands](#docker-setup-container-commands)        | ~83  |
+| └─ Development Mode     | Working with docker watchers      | [Development Mode](#docker-compose-development-mode)          | ~91  |
+| **Docker Production**   | Production environment setup      | [Production Docker Setup](#production-docker-setup)           | ~240 |
+| └─ Installation Steps   | Server setup process              | [Production Installation](#production-installation)           | ~244 |
+| └─ SSL Configuration    | Setting up HTTPS                  | [SSL Setup](#ssl-configuration)                               | ~260 |
+| └─ Monitoring           | Logs and container status         | [Monitoring](#monitoring)                                     | ~280 |
+| **Theme Development**   | Theme implementation details      | [Theme Development](#cool-things-wordpress-theme-development) | ~110 |
+| └─ Project Overview     | Goals and requirements            | [Project Overview](#project-overview)                         | ~114 |
+| └─ Key Features         | Core functionality                | [Key Features](#key-features)                                 | ~124 |
+| └─ Development Stack    | Technologies used                 | [Development Stack](#development-stack)                       | ~134 |
+| **Design System**       | Visual design specifications      | [Design Analysis](#design-analysis)                           | ~315 |
+| └─ Color Palette        | Brand colors                      | [Color Palette](#color-palette)                               | ~319 |
+| └─ Typography           | Fonts and text styles             | [Typography](#typography)                                     | ~326 |
+| └─ Layout Components    | UI component specs                | [Layout Components](#layout-components)                       | ~336 |
+| **Asset Management**    | Required files and resources      | [Required Assets](#required-assets-for-export)                | ~380 |
+| └─ Critical Elements    | Essential design assets           | [Critical Elements](#critical-elements)                       | ~382 |
+| └─ Export Checklist     | Asset export guide                | [Export Checklist](#figma-export-checklist-by-section)        | ~400 |
+| **Disaster Recovery**   | Backup and restore                | [Disaster Recovery](#disaster-recovery)                       | ~420 |
+| └─ Backup Procedures    | Database backup steps             | [Backup Database](#backup-database)                           | ~422 |
+| └─ Recovery Steps       | Manual recovery guide             | [Manual Recovery](#manual-recovery-steps-macro-steps)         | ~430 |
+| **Database Management** | Database operations and backups   | [Database Management](#database-management)                   | ~450 |
+| └─ Manual Backups       | Manual backup commands            | [Manual Backups](#manual-database-backups)                    | ~452 |
+| └─ Automated Backups    | Scheduled backup configuration    | [Automated Backups](#automated-database-backups)              | ~465 |
+| └─ Backup Recovery      | Restoring from backups            | [Backup Recovery](#restoring-from-database-backups)           | ~475 |
 
 ## Theme Structure
 
@@ -705,3 +709,63 @@ docker compose exec backup-service /scripts/restore.sh
    - Maintain list of required plugins
    - Document custom field configurations
    - Keep records of critical site settings
+
+## Database Management
+
+### Manual Database Backups
+
+To manually create a database backup from the WordPress Docker container:
+
+```bash
+# Basic database export
+docker exec posture_code_test_wp wp db export "backup-$(date +%Y%m%d-%H%M%S).sql" --allow-root
+
+# Export to specific backup location
+docker exec posture_code_test_wp wp db export "/var/www/html/wp-content/themes/posture_cool_things/backups/backup-$(date +%Y%m%d-%H%M%S).sql" --allow-root
+
+# Alternative method using mysqldump directly
+# IMPORTANT: Replace 'chadzilla' and 'starkindustries' with your database username and password
+docker exec posture_code_test_db mysqldump -u <your_username> -p<your_password> posture_db > backup.sql
+```
+
+> **Note:** When using these commands, replace:
+>
+> - `<your_username>` with your database username
+> - `<your_password>` with your database password
+> - `posture_db` with your database name if different
+
+### Automated Database Backups
+
+The project includes automated backups configured in `docker-compose.override.yml`. Backups are scheduled to run daily at 2 AM EST.
+
+To modify the backup schedule:
+
+```yaml
+# In docker-compose.override.yml
+services:
+  backup-service:
+    # ... existing configuration ...
+    command:
+      - |
+        # Modify the cron schedule as needed (currently set to 2 AM daily)
+        echo "0 2 * * * /scripts/backup.sh >> /backups/backup.log 2>&1"
+```
+
+### Restoring from Database Backups
+
+To restore a database from a backup file:
+
+```bash
+# Using WP-CLI
+docker exec posture_code_test_wp wp db import /path/to/backup.sql --allow-root
+
+# Using MySQL directly
+# IMPORTANT: Replace credentials with your own
+docker exec -i posture_code_test_db mysql -u <your_username> -p<your_password> posture_db < backup.sql
+```
+
+> **Important Security Note:**
+>
+> - Never commit real database credentials to version control
+> - Use environment variables or `.env` files for sensitive information
+> - The example credentials shown above are for demonstration only
