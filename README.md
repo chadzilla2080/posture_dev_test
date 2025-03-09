@@ -4,38 +4,54 @@ A modern, responsive WordPress theme built with SASS and Docker. Features a dyna
 
 ## Table of Contents
 
-| Section & Subsections   | Description                       | Location                                                      | Line |
-| ----------------------- | --------------------------------- | ------------------------------------------------------------- | ---- |
-| **Theme Structure**     | Directory layout and organization | [Theme Structure](#theme-structure)                           | ~35  |
-| └─ Directory Tree       | Detailed file structure           | [Directory Tree](#theme-structure)                            | ~37  |
-| **Development Setup**   | Setup and installation            | [Development Setup](#development-setup)                       | ~54  |
-| └─ Prerequisites        | Required software and tools       | [Prerequisites](#prerequisites)                               | ~56  |
-| └─ Installation         | Step-by-step setup guide          | [Installation](#installation)                                 | ~62  |
-| **Docker Development**  | Local development environment     | [Docker Development](#docker-development)                     | ~81  |
-| └─ Container Commands   | Basic docker commands             | [Container Commands](#docker-setup-container-commands)        | ~83  |
-| └─ Development Mode     | Working with docker watchers      | [Development Mode](#docker-compose-development-mode)          | ~91  |
-| **Docker Production**   | Production environment setup      | [Production Docker Setup](#production-docker-setup)           | ~240 |
-| └─ Installation Steps   | Server setup process              | [Production Installation](#production-installation)           | ~244 |
-| └─ SSL Configuration    | Setting up HTTPS                  | [SSL Setup](#ssl-configuration)                               | ~260 |
-| └─ Monitoring           | Logs and container status         | [Monitoring](#monitoring)                                     | ~280 |
-| **Theme Development**   | Theme implementation details      | [Theme Development](#cool-things-wordpress-theme-development) | ~110 |
-| └─ Project Overview     | Goals and requirements            | [Project Overview](#project-overview)                         | ~114 |
-| └─ Key Features         | Core functionality                | [Key Features](#key-features)                                 | ~124 |
-| └─ Development Stack    | Technologies used                 | [Development Stack](#development-stack)                       | ~134 |
-| **Design System**       | Visual design specifications      | [Design Analysis](#design-analysis)                           | ~315 |
-| └─ Color Palette        | Brand colors                      | [Color Palette](#color-palette)                               | ~319 |
-| └─ Typography           | Fonts and text styles             | [Typography](#typography)                                     | ~326 |
-| └─ Layout Components    | UI component specs                | [Layout Components](#layout-components)                       | ~336 |
-| **Asset Management**    | Required files and resources      | [Required Assets](#required-assets-for-export)                | ~380 |
-| └─ Critical Elements    | Essential design assets           | [Critical Elements](#critical-elements)                       | ~382 |
-| └─ Export Checklist     | Asset export guide                | [Export Checklist](#figma-export-checklist-by-section)        | ~400 |
-| **Disaster Recovery**   | Backup and restore                | [Disaster Recovery](#disaster-recovery)                       | ~420 |
-| └─ Backup Procedures    | Database backup steps             | [Backup Database](#backup-database)                           | ~422 |
-| └─ Recovery Steps       | Manual recovery guide             | [Manual Recovery](#manual-recovery-steps-macro-steps)         | ~430 |
-| **Database Management** | Database operations and backups   | [Database Management](#database-management)                   | ~450 |
-| └─ Manual Backups       | Manual backup commands            | [Manual Backups](#manual-database-backups)                    | ~452 |
-| └─ Automated Backups    | Scheduled backup configuration    | [Automated Backups](#automated-database-backups)              | ~465 |
-| └─ Backup Recovery      | Restoring from backups            | [Backup Recovery](#restoring-from-database-backups)           | ~475 |
+| Section & Subsections               | Description                       | Location                                                      | Line |
+| ----------------------------------- | --------------------------------- | ------------------------------------------------------------- | ---- |
+| **Theme Structure**                 | Directory layout and organization | [Theme Structure](#theme-structure)                           | ~35  |
+| └─ Directory Tree                   | Detailed file structure           | [Directory Tree](#theme-structure)                            | ~37  |
+| **Development Setup**               | Setup and installation            | [Development Setup](#development-setup)                       | ~54  |
+| └─ Prerequisites                    | Required software and tools       | [Prerequisites](#prerequisites)                               | ~56  |
+| └─ Installation                     | Step-by-step setup guide          | [Installation](#installation)                                 | ~62  |
+| **Docker Development**              | Local development environment     | [Docker Development](#docker-development)                     | ~81  |
+| └─ Container Commands               | Basic docker commands             | [Container Commands](#docker-setup-container-commands)        | ~83  |
+| └─ Development Mode                 | Working with docker watchers      | [Development Mode](#docker-compose-development-mode)          | ~91  |
+| **Docker Production**               | Production environment setup      | [Production Docker Setup](#production-docker-setup)           | ~240 |
+| └─ Installation Steps               | Server setup process              | [Production Installation](#production-installation)           | ~244 |
+| └─ SSL Configuration                | Setting up HTTPS                  | [SSL Setup](#ssl-configuration)                               | ~260 |
+| └─ Monitoring                       | Logs and container status         | [Monitoring](#monitoring)                                     | ~280 |
+| **Theme Development**               | Theme implementation details      | [Theme Development](#cool-things-wordpress-theme-development) | ~110 |
+| └─ Project Overview                 | Goals and requirements            | [Project Overview](#project-overview)                         | ~114 |
+| └─ Key Features                     | Core functionality                | [Key Features](#key-features)                                 | ~124 |
+| └─ Development Stack                | Technologies used                 | [Development Stack](#development-stack)                       | ~134 |
+| **Design System**                   | Visual design specifications      | [Design Analysis](#design-analysis)                           | ~315 |
+| └─ Color Palette                    | Brand colors                      | [Color Palette](#color-palette)                               | ~319 |
+| └─ Typography                       | Fonts and text styles             | [Typography](#typography)                                     | ~326 |
+| └─ Layout Components                | UI component specs                | [Layout Components](#layout-components)                       | ~336 |
+| **Asset Management**                | Required files and resources      | [Required Assets](#required-assets-for-export)                | ~380 |
+| └─ Critical Elements                | Essential design assets           | [Critical Elements](#critical-elements)                       | ~382 |
+| └─ Export Checklist                 | Asset export guide                | [Export Checklist](#figma-export-checklist-by-section)        | ~400 |
+| **Disaster Recovery**               | Backup and restore                | [Disaster Recovery](#disaster-recovery)                       | ~420 |
+| └─ Backup Procedures                | Database backup steps             | [Backup Database](#backup-database)                           | ~422 |
+| └─ Recovery Steps                   | Manual recovery guide             | [Manual Recovery](#manual-recovery-steps-macro-steps)         | ~430 |
+| **Database Management**             | Database operations and backups   | [Database Management](#database-management)                   | ~450 |
+| └─ Manual Backups                   | Manual backup commands            | [Manual Backups](#manual-database-backups)                    | ~452 |
+| └─ Automated Backups                | Scheduled backup configuration    | [Automated Backups](#automated-database-backups)              | ~465 |
+| └─ Backup Recovery                  | Restoring from backups            | [Backup Recovery](#restoring-from-database-backups)           | ~475 |
+| **Troubleshooting**                 | Common issues and health checks   | [Troubleshooting](#troubleshooting)                           | ~480 |
+| **Production Deployment Checklist** |                                   |                                                               | ~485 |
+| └─ Pre-Deployment                   |                                   |                                                               | ~487 |
+| └─ Security Measures                |                                   |                                                               | ~490 |
+| └─ Post-Deployment                  |                                   |                                                               | ~493 |
+| **Docker Commands Reference**       | All Docker-related commands       | [Docker Commands](#docker-commands-reference)                 | ~200 |
+| └─ Development Commands             | Local development operations      | [Development Commands](#development-commands)                 | ~205 |
+| └─ Production Commands              | Production operations             | [Production Commands](#production-commands)                   | ~240 |
+| └─ Database Operations              | Database management               | [Database Operations](#database-operations)                   | ~270 |
+| └─ Monitoring & Logs                | Monitoring and logging            | [Monitoring & Logs](#monitoring-and-logs)                     | ~290 |
+| **Configuration Files Reference**   | Detailed config explanations      | [Configuration Files](#configuration-files-reference)         | ~890 |
+| └─ Development Dockerfile           | Development container setup       | [Development Dockerfile](#development-dockerfile)             | ~895 |
+| └─ Production Dockerfile            | Production container setup        | [Production Dockerfile](#production-dockerfile)               | ~910 |
+| └─ Production Docker Compose        | Production service setup          | [Production Docker Compose](#production-docker-compose)       | ~925 |
+| └─ Nginx Configuration              | Web server setup                  | [Nginx Configuration](#nginx-configuration)                   | ~945 |
+| └─ Deployment Script                | Deployment process                | [Deployment Script](#deployment-script)                       | ~970 |
 
 ## Theme Structure
 
@@ -61,30 +77,52 @@ posture_cool_things/
 
 ### Prerequisites
 
-- Docker Desktop
-- Node.js (v14+)
-- npm (v6+)
+- Docker Desktop (v4.x+)
+- Node.js (v14.x - v18.x)
+- npm (v6.x+)
+- Git (v2.x+)
+- Minimum System Requirements:
+  - 4GB RAM
+  - 20GB free disk space
+  - CPU: 2 cores minimum
 
-### Installation Steps
+### Initial Setup Checklist
 
-1. Clone the repository:
+1. [ ] Clone repository
+2. [ ] Copy `.env.example` to `.env`
+3. [ ] Configure environment variables
+4. [ ] Start development environment
+5. [ ] Install theme dependencies
+6. [ ] Compile assets
+7. [ ] Access local development site
+
+### Quick Start Guide
 
 ```bash
+# Clone and enter project
 git clone [repository-url]
-```
+cd posture_cool_things
 
-2. Start Docker Dev Environment:
+# Setup environment
+cp .env.example .env
+# Edit .env with your settings
 
-```bash
-# Initial setup
+# Start development environment
 docker compose up -d
 
-# Watch for changes
-docker compose watch
+# Install theme dependencies
+docker compose exec wordpress npm install
 
-# If you modify Docker files
-docker compose up --build && docker compose watch
+# Compile assets
+docker compose exec wordpress npm run build
+
+# Watch for changes
+docker compose exec wordpress npm run watch
 ```
+
+Access the site at: http://localhost:8080
+WordPress admin: http://localhost:8080/wp-admin
+Default credentials: admin / password (change immediately)
 
 ### Docker Development Commands
 
@@ -139,9 +177,7 @@ The container will automatically watch and sync changes in:
 - `wp-content/languages/`
 - `wp-content/uploads/`
 
-## Production Docker Setup
-
-### Initial Docker Installation
+## Docker Development
 
 ```bash
 # Install Docker
@@ -163,6 +199,51 @@ sudo chmod +x /usr/local/bin/docker-compose
 ├── deploy.sh             # Deployment script
 ├── .env                  # Environment variables (do not commit)
 └── wp-content/          # WordPress theme and plugins
+```
+
+### Extended Production Configurations
+
+#### PHP Performance Settings
+
+```bash
+# Add these to php.ini for better performance
+upload_max_filesize = 64M
+post_max_size = 64M
+max_execution_time = 300
+memory_limit = 256M
+```
+
+#### Object Cache Configuration
+
+```bash
+# Install Redis for object caching
+docker compose -f docker-compose.prod.yml exec wordpress install-php-extensions redis
+
+# Configure WordPress object cache
+docker compose -f docker-compose.prod.yml exec wordpress wp config set WP_CACHE true
+docker compose -f docker-compose.prod.yml exec wordpress wp config set WP_CACHE_KEY_SALT 'your-unique-salt'
+```
+
+#### MySQL Optimization
+
+```bash
+# Add to my.cnf for better database performance
+innodb_buffer_pool_size = 1G
+innodb_log_file_size = 256M
+innodb_flush_log_at_trx_commit = 2
+innodb_flush_method = O_DIRECT
+```
+
+#### Additional Monitoring Tools
+
+```bash
+# Install WordPress monitoring plugins
+docker compose -f docker-compose.prod.yml exec wordpress wp plugin install query-monitor --activate
+docker compose -f docker-compose.prod.yml exec wordpress wp plugin install wp-crontrol --activate
+
+# Enhanced logging setup
+docker compose -f docker-compose.prod.yml exec wordpress ln -sf /dev/stdout /var/log/nginx/access.log
+docker compose -f docker-compose.prod.yml exec wordpress ln -sf /dev/stderr /var/log/nginx/error.log
 ```
 
 ### SSL Configuration
@@ -692,3 +773,317 @@ docker exec -i posture_code_test_db mysql -u <your_username> -p<your_password> p
 > - Never commit real database credentials to version control
 > - Use environment variables or `.env` files for sensitive information
 > - The example credentials shown above are for demonstration only
+
+## Troubleshooting
+
+### Common Issues
+
+1. **Docker Container Won't Start**
+
+   ```bash
+   # Check logs
+   docker compose logs
+
+   # Verify ports aren't in use
+   sudo lsof -i :8080
+   sudo lsof -i :3306
+   ```
+
+2. **Asset Compilation Fails**
+
+   ```bash
+   # Clear node modules and reinstall
+   docker compose exec wordpress rm -rf node_modules
+   docker compose exec wordpress npm install
+   ```
+
+3. **Database Connection Issues**
+
+   ```bash
+   # Verify database container is running
+   docker compose ps
+
+   # Check database logs
+   docker compose logs db
+   ```
+
+### Health Checks
+
+```bash
+# Check all services
+docker compose ps
+
+# Verify WordPress installation
+docker compose exec wordpress wp core is-installed
+
+# Test database connection
+docker compose exec wordpress wp db check
+```
+
+## Production Deployment Checklist
+
+### Pre-Deployment
+
+- [ ] Backup existing database
+- [ ] Update all WordPress core files
+- [ ] Update all plugins
+- [ ] Update theme
+- [ ] Test in staging environment
+
+### Security Measures
+
+- [ ] SSL certificate installed
+- [ ] Firewall configured
+- [ ] File permissions set correctly
+- [ ] Strong admin passwords
+- [ ] Backup system verified
+- [ ] Security plugins configured
+
+### Post-Deployment
+
+- [ ] Verify SSL working
+- [ ] Check all forms and interactions
+- [ ] Test responsive layouts
+- [ ] Verify backup system
+- [ ] Monitor error logs
+- [ ] Check site performance
+
+## Contact & Support
+
+### Project Maintainers
+
+- Lead Developer: Chad Buie
+- Technical Contact: chadbuie@gmail.com
+
+### Support Resources
+
+- Internal Documentation:
+
+  Here are the files that are relevant to the project:
+
+  - /Users/autopartex/Desktop/PostureInteractive/dev_test_wp/wp-content/themes/posture_cool_things/package.json.md
+  - /Users/autopartex/Desktop/PostureInteractive/dev_test_wp/wp-content/themes/posture_cool_things/docker-compose.override.yml
+  - /Users/autopartex/Desktop/PostureInteractive/dev_test_wp/wp-content/themes/posture_cool_things/docker-compose.yml
+  - /Users/autopartex/Desktop/PostureInteractive/dev_test_wp/wp-content/themes/posture_cool_things/docker-compose.prod.yml
+  - /Users/autopartex/Desktop/PostureInteractive/dev_test_wp/wp-content/themes/posture_cool_things/Dockerfile.prod
+  - /Users/autopartex/Desktop/PostureInteractive/dev_test_wp/wp-content/themes/posture_cool_things/nginx.conf
+  - /Users/autopartex/Desktop/PostureInteractive/dev_test_wp/wp-content/themes/posture_cool_things/deploy.sh
+
+### Additional Docker Development Tips
+
+```bash
+# Useful development commands
+# View real-time container logs
+docker compose logs -f
+
+# Check container resource usage
+docker stats
+
+# Rebuild single service
+docker compose up -d --build wordpress
+
+# Force recreation of containers
+docker compose up -d --force-recreate
+
+# Import database
+docker compose exec -T db mysql -u${DB_USER} -p${DB_PASSWORD} ${DB_NAME} < backup.sql
+```
+
+## Docker Commands Reference
+
+### Development Commands
+
+```bash
+# Start Development Environment
+docker compose up -d                    # Start containers in background
+docker compose up                       # Start with visible logs
+docker compose watch                    # Watch for changes
+
+# Stop Environment
+docker compose down                     # Stop containers
+docker compose down -v                  # ⚠️ DANGER: Removes all data! Backup first!
+
+# Rebuild Containers
+docker compose up --build              # Rebuild and start
+docker compose up -d --build wordpress  # Rebuild specific service
+docker compose up -d --force-recreate  # Force container recreation
+
+# Container Access
+docker compose exec wordpress bash      # Access WordPress container shell
+docker compose exec db mysql -u${DB_USER} -p${DB_PASSWORD} ${DB_NAME}  # Access MySQL
+
+# Asset Compilation
+docker compose exec wordpress npm install        # Install dependencies
+docker compose exec wordpress npm run build      # Build assets
+docker compose exec wordpress npm run watch-sass # Watch SASS changes
+```
+
+### Production Commands
+
+```bash
+# Deployment
+docker compose -f docker-compose.prod.yml up -d     # Start production
+docker compose -f docker-compose.prod.yml down      # Stop production
+docker compose -f docker-compose.prod.yml build     # Build production images
+
+# SSL/TLS
+docker compose -f docker-compose.prod.yml exec wordpress certbot renew  # Renew SSL
+docker compose -f docker-compose.prod.yml restart nginx                 # Reload nginx
+
+# Updates
+docker compose -f docker-compose.prod.yml pull      # Pull latest images
+docker compose -f docker-compose.prod.yml up -d     # Apply updates
+```
+
+### Database Operations
+
+```bash
+# Backups
+docker compose exec wordpress wp db export backup.sql                    # WP-CLI backup
+docker exec posture_code_test_db mysqldump -u ${DB_USER} -p${DB_PASSWORD} ${DB_NAME} > backup.sql  # MySQL backup
+
+# Restore
+docker compose exec wordpress wp db import backup.sql                    # WP-CLI restore
+docker exec -i posture_code_test_db mysql -u ${DB_USER} -p${DB_PASSWORD} ${DB_NAME} < backup.sql   # MySQL restore
+
+# Automated Backups
+docker compose exec backup-service /scripts/backup.sh                    # Manual backup trigger
+docker compose exec backup-service /scripts/restore.sh                   # Restore from backup
+```
+
+### Monitoring and Logs
+
+```bash
+# Container Status
+docker compose ps                       # View container status
+docker stats                           # Resource usage
+
+# Logs
+docker compose logs -f                 # Follow all logs
+docker compose logs wordpress          # WordPress container logs
+docker compose logs db                 # Database logs
+docker compose logs --tail=100         # Last 100 log lines
+
+# Health Checks
+docker compose exec wordpress wp core is-installed  # Check WordPress
+docker compose exec wordpress wp db check          # Check database
+```
+
+> **Note:** Replace environment variables (${DB_USER}, ${DB_PASSWORD}, ${DB_NAME}) with your actual values or ensure they are set in your environment.
+
+## Configuration Files Reference
+
+### Development Dockerfile
+
+```dockerfile
+# Explanation of key sections in Dockerfile
+FROM wordpress:latest
+
+# Node.js installation for development
+RUN apt-get update && apt-get install -y curl gnupg \
+    && curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
+    && apt-get install -y nodejs
+
+# Development tools installation
+RUN apt-get install -y \
+    inotify-tools \
+    default-mysql-client \
+    && npm install -g sass \
+    && curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
+    && chmod +x wp-cli.phar \
+    && mv wp-cli.phar /usr/local/bin/wp
+```
+
+### Production Dockerfile
+
+```dockerfile
+# Explanation of key sections in Dockerfile.prod
+FROM wordpress:latest
+
+# Build-time only dependencies
+RUN apt-get update && apt-get install -y nodejs
+
+# Theme build process
+COPY wp-content/themes/posture_cool_things /var/www/html/wp-content/themes/posture_cool_things
+WORKDIR /var/www/html/wp-content/themes/posture_cool_things
+
+# Build optimization
+RUN npm install \
+    && npm run build \
+    && npm prune --production \
+    && apt-get remove -y nodejs  # Remove build dependencies
+```
+
+### Production Docker Compose
+
+```yaml
+# Key configurations in docker-compose.prod.yml
+services:
+  db:
+    image: mysql:8.0
+    volumes:
+      - db_data:/var/lib/mysql # Persistent database storage
+    networks:
+      - posture_network # Isolated network
+
+  wordpress:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod # Uses production optimized image
+    volumes:
+      - wp_data:/var/www/html # Persistent WordPress files
+    networks:
+      - posture_network
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - '80:80'
+      - '443:443' # SSL support
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./ssl:/etc/nginx/ssl # SSL certificates
+```
+
+### Nginx Configuration
+
+```nginx
+# Key sections of nginx.conf
+server {
+    listen 443 ssl http2;
+    server_name your-domain.com;
+
+    # SSL Configuration
+    ssl_certificate /etc/nginx/ssl/fullchain.pem;
+    ssl_certificate_key /etc/nginx/ssl/privkey.pem;
+
+    # WordPress Handling
+    location / {
+        try_files $uri $uri/ /index.php?$args;
+    }
+
+    # PHP Processing
+    location ~ \.php$ {
+        fastcgi_pass wordpress:9000;
+        include fastcgi_params;
+    }
+}
+```
+
+### Deployment Script
+
+```bash
+# Key operations in deploy.sh
+#!/bin/bash
+
+# Pull latest changes
+git pull origin main
+
+# Rebuild and deploy
+docker-compose -f docker-compose.prod.yml down
+docker-compose -f docker-compose.prod.yml build
+docker-compose -f docker-compose.prod.yml up -d
+
+# Cleanup
+docker image prune -f
+```
