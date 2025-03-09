@@ -2,6 +2,8 @@
 
 A modern, responsive WordPress theme built with SASS and Docker. Features a dynamic front page with hero section, features showcase, CTA sections, and a news feed.
 
+Note: If you are reading this on GitHub, use the anchor links to navigate to the sections you are interested in. The line numbers to the right are for reading in an IDE.
+
 ## Table of Contents
 
 | Section & Subsections               | Description                       | Location                                                      | Line |
