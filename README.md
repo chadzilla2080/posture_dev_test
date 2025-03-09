@@ -61,60 +61,163 @@ posture_cool_things/
 - Node.js (v14+)
 - npm (v6+)
 
-### Installation
+### Installation Steps
 
 1. Clone the repository:
 
+```bash
 git clone [repository-url]
+```
 
 2. Start Docker Dev Environment:
 
+```bash
 # Initial setup
-
 docker compose up -d
 
 # Watch for changes
-
 docker compose watch
 
 # If you modify Docker files
+docker compose up --build && docker compose watch
+```
 
+### Docker Development Commands
+
+1. Start container
+
+```bash
+docker compose up
+```
+
+2. Stop container
+
+```bash
+docker compose down
+```
+
+3. Access container shell
+
+```bash
+docker compose exec wordpress bash
+```
+
+4. WordPress CLI commands
+
+```bash
+docker compose exec wordpress wp --info
+docker compose exec wordpress wp --version
+docker compose exec wordpress wp --help
+```
+
+### Development Mode
+
+When making changes to Docker files while watchers are running:
+
+```bash
+# Reset containers
+docker compose down -v
+
+# Rebuild and watch
 docker compose up --build && docker compose watch
 
-# Docker Setup, Container Commands
+# Start dev mode
+docker compose up -d
 
-1. Install Docker Desktop
-2. Run `docker compose up`
-3. Run `docker compose down` to stop the container
-4. Run `docker compose exec wordpress bash` to get a bash shell into the container
-5. Run `docker compose exec wordpress wp --info` to get information about the WordPress installation
-6. Run `docker compose exec wordpress wp --version` to get the WordPress version
-7. Run `docker compose exec wordpress wp --help` to get help about the WordPress CLI
+# Watch SASS changes
+docker compose exec wordpress npm run watch-sass
+```
 
-# Docker Compose Development Mode
+The container will automatically watch and sync changes in:
 
-If you make changes to the Dockerfile or Docker Compose File and you are running docker watchers
+- `wp-content/themes/posture_cool_things/`
+- `wp-content/plugins/`
+- `wp-content/languages/`
+- `wp-content/uploads/`
 
-- docker compose down -v
-- docker compose up --build && docker compose watch
+## Production Setup
 
-Then you can run development mode with the following commands:
+### Initial Server Setup
 
-Run `docker compose up -d` in one terminal to start the container in "development mode"
+```bash
+# Install Docker
+curl -fsSL https://get.docker.com -o get-docker.sh
+sh get-docker.sh
 
-Run `docker compose exec wordpress npm run watch-sass` in another terminal to watch for changes in the `sass` and `js` folders and automatically compile them.
+# Install Docker Compose
+sudo curl -L "https://github.com/docker/compose/releases/download/v2.23.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+```
 
-- The container will also watch for changes in the `wp-content/themes/posture_cool_things` folder and will automatically sync them to the container.
-- The container will also watch for changes in the `wp-content/plugins` folder and will automatically sync them to the container.
-- The container will also watch for changes in the `wp-content/languages` folder and will automatically sync them to the container.
-- The container will also watch for changes in the `wp-content/uploads` folder and will automatically sync them to the container.
+### SSL Configuration
 
-# Important Docker Commands
+```bash
+# Install certbot
+sudo apt-get update
+sudo apt-get install certbot
 
-If for whatever reason you need to restore the database from a backup, you can use the following commands:
+# Generate certificate
+sudo certbot certonly --standalone -d your-domain.com
 
-- docker compose exec backup-service /scripts/restore.sh
-- docker compose exec backup-service /scripts/backup.sh
+# Copy certificates
+mkdir -p ssl
+sudo cp /etc/letsencrypt/live/your-domain.com/fullchain.pem ssl/
+sudo cp /etc/letsencrypt/live/your-domain.com/privkey.pem ssl/
+```
+
+### Environment Configuration
+
+```env
+DB_NAME=your_database_name
+DB_USER=your_database_user
+DB_PASSWORD=your_secure_password
+DB_ROOT_PASSWORD=your_secure_root_password
+WP_TABLE_PREFIX=wp_
+```
+
+### Deployment
+
+```bash
+# Clone theme
+git clone https://github.com/your-repo/your-wordpress-theme.git
+cd your-wordpress-theme
+
+# Make deploy script executable
+chmod +x deploy.sh
+
+# Deploy
+./deploy.sh
+```
+
+### Maintenance Commands
+
+```bash
+# View logs
+docker-compose -f docker-compose.prod.yml logs        # All containers
+docker-compose -f docker-compose.prod.yml logs wordpress  # Specific container
+
+# Check status
+docker-compose -f docker-compose.prod.yml ps
+
+# View recent logs
+docker-compose -f docker-compose.prod.yml logs --tail=100
+
+# Restart service
+docker-compose -f docker-compose.prod.yml restart wordpress
+
+# Set permissions
+sudo chown -R www-data:www-data wp-content
+```
+
+### Security Setup
+
+```bash
+# Configure firewall
+sudo ufw allow 80
+sudo ufw allow 443
+sudo ufw allow 22
+sudo ufw enable
+```
 
 # Cool Things WordPress Theme Development
 
@@ -158,6 +261,7 @@ sh get-docker.sh
 Install Docker Compose
 sudo curl -L "https://github.com/docker/compose/releases/download/v2.23.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
+
 .
 ├── docker-compose.prod.yml # Production Docker Compose configuration
 ├── Dockerfile.prod # Production Dockerfile
@@ -166,6 +270,7 @@ sudo chmod +x /usr/local/bin/docker-compose
 ├── .env # Environment variables (do not commit)
 └── wp-content/ # WordPress theme and plugins
 :
+
 bash
 sudo apt-get update
 sudo apt-get install certbot
