@@ -62,19 +62,22 @@ Thumbs.db
 # Docker
 *.log
 data/
+!docker/
+!docker/*/
+!docker/*/*.yml
+!docker/*/*.conf
+!docker/*/*.sh
+!docker/*/*.prod
 
 # Compiled assets
 wp-content/themes/posture_cool_things/dist/
 wp-content/themes/posture_cool_things/build/
 
-# Backup files and directories
-wp-content/themes/posture_cool_things/backups/
-wp-content/backup*/
-wp-content/*/backups/
-wp-content/upgrade/
-wp-content/backup-db/
-wp-content/cache/
-wp-content/backups/
+# Backup files
 backup-*/
 *backup.*
-*.bak 
+*.bak
+
+# Keep environment setup scripts
+!test-setup.sh
+!switch-env.sh

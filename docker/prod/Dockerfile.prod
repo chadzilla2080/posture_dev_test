@@ -1,0 +1,43 @@
+FROM wordpress:php8.1-fpm
+
+# Install Node.js and MySQL client for build process only
+RUN apt-get update && apt-get install -y curl gnupg default-mysql-client \
+    && curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
+    && apt-get install -y nodejs
+
+# Install WP-CLI
+RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
+    && chmod +x wp-cli.phar \
+    && mv wp-cli.phar /usr/local/bin/wp
+
+WORKDIR /var/www/html
+
+# Copy theme files and build assets
+COPY wp-content/themes/posture_cool_things /var/www/html/wp-content/themes/posture_cool_things
+
+WORKDIR /var/www/html/wp-content/themes/posture_cool_things
+
+# Install dependencies and build
+RUN npm install \
+    && npm run build \
+    && npm prune --production \
+    && apt-get remove -y nodejs \
+    && apt-get autoremove -y \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /var/www/html
+
+# Create wp-cli.yml configuration file
+RUN echo "path: /var/www/html\n\
+url: http://localhost\n\
+core config:\n\
+  dbuser: \${WORDPRESS_DB_USER}\n\
+  dbpass: \${WORDPRESS_DB_PASSWORD}\n\
+  dbhost: db" > /var/www/html/wp-cli.yml
+
+# Remove plugin installation from Dockerfile - we'll do it post-container startup
+# Instead, create a setup script that will run after WordPress is fully initialized
+
+COPY docker/prod/setup-plugins.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/setup-plugins.sh 
