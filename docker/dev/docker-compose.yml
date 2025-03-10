@@ -1,0 +1,46 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: posture_code_test_db
+    environment:
+      MYSQL_DATABASE: posture_db
+      MYSQL_USER: chadzilla
+      MYSQL_PASSWORD: starkindustries
+      MYSQL_ROOT_PASSWORD: admin
+    volumes:
+      - db_data:/var/lib/mysql
+
+  wordpress:
+    build:
+      context: .
+    container_name: posture_code_test_wp
+    entrypoint: docker-entrypoint-custom.sh
+    depends_on:
+      - db
+    ports:
+      - '8080:80'
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: chadzilla
+      WORDPRESS_DB_PASSWORD: starkindustries
+      WORDPRESS_DB_NAME: posture_db
+    volumes:
+      # Named volume for WordPress core
+      - wp_data:/var/www/html
+      # Map only non-watched directories
+      - ./wp-content/plugins:/var/www/html/wp-content/plugins
+    develop:
+      watch:
+        - action: sync+restart # Changed to sync+restart for SASS compilation
+          path: ./wp-content/themes
+          target: /var/www/html/wp-content/themes
+          ignore:
+            - '**/.git'
+            - '**/node_modules'
+            - '**/.sass-cache'
+            - '**/*.map'
+            - '**/.DS_Store'
+
+volumes:
+  db_data:
+  wp_data:

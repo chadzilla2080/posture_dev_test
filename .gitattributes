@@ -1,0 +1,68 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Docker files
+*.dockerfile text
+Dockerfile* text
+docker-compose*.yml text
+*.conf text
+
+# Shell scripts (Unix-style line endings)
+*.sh text eol=lf
+deploy*.sh text eol=lf
+
+# Web files
+*.php text
+*.css text
+*.sass text
+*.scss text
+*.js text
+*.json text
+*.htm text
+*.html text
+*.xml text
+*.txt text
+*.ini text
+*.inc text
+.htaccess text
+
+# WordPress specific
+*.php text
+wp-config*.php text
+
+# Documentation
+*.md text diff=markdown
+*.markdown text diff=markdown
+
+# Images and binary files (no line-ending conversion)
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.svg text
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary
+
+# Archives
+*.zip binary
+*.gz binary
+*.tar binary
+
+# Fonts
+*.ttf binary
+*.eot binary
+*.woff binary
+*.woff2 binary
+
+# RC files (like .babelrc, .eslintrc)
+*.*rc text
+
+# Ignore files (like .gitignore, .npmignore)
+*.*ignore text
+
+# Environment files
+*.env text
+.env* text 
